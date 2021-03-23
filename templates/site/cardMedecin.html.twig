@@ -1,0 +1,45 @@
+ {% extends 'base.html.twig' %}
+
+
+{% block title %}Détail du médecin{% endblock %}
+
+{% block body %}
+ 
+ 
+ <h4 class="display-4 text-center my-5"> Donner votre avis...</h4>
+
+           {{ form_start(formAvis,{'attr': {'class': 'col-md-4 mx-auto'}}) }} 
+
+           {{ form_row(formAvis.titre, {'label': "Titre de l'avis"}) }}
+
+            {{ form_row(formAvis.auteur, {'attr':{'placeholder':"Saisir votre nom"}, 'label': "Nom d'utilisateur"}) }} 
+
+             {{ form_row(formAvis.contenu, {'label': "Saisir votre commentaire"}) }}
+
+             {{ form_row(formAvis.note_accueil, {'label': "Noter l'accueil"}) }}
+
+             {{ form_row(formAvis.note_pro, {'label': "Noter les compétences"}) }}
+
+             <button type="submit" class="btn btn-secondary">Poster votre avis</button>
+
+            {{ form_end(formAvis)}}
+
+
+
+
+          <H4 class="my-5"> Vos réactions... </h4>
+          {#<div class="row">  {% for avis in Medecins.avis %}
+          
+
+        <div class="col_md-4"> <span><strong> {{ avis.auteur }}</strong></span> </div>
+        <small class="font-italic"> Posté le {{ avis.createdAt|date('d/M/Y') }} à {{ avis.createdAt|date('h:i:s') }} 
+
+          <div class="col_md-8"> {{ avis.contenu|striptags }} </div>
+
+          {% endfor %}#}
+          
+          </div>
+        </div>
+        </div>
+
+{% endblock %}

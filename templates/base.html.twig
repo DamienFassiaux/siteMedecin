@@ -36,8 +36,8 @@
                 <span class="span1 span1_1">espace médecin</span>
                 </a>
              </div>
-             <a class="nav_enfant">  <span class="span1 span2">Connexion</span></a>
-             <a class="nav_enfant"><span class="span1 span2">Inscription</span></a>
+             <a class="nav_enfant" href="{{ path('security_login') }}">  <span class="span1 span2">Connexion</span></a>
+             <a class="nav_enfant" href="{{ path('security_inscription') }}"><span class="span1 span2">Inscription</span></a>
             </nav>      
           </header>
 
@@ -58,7 +58,9 @@
 
 
         {% block javascripts %}
-            <script type="text/javascript" src="{{asset('/script.js')}}"></script>        
+            <script type="text/javascript" src="{{asset('/script.js')}}"></script>  
+            
+                  
         {% endblock %}
     </body>
 

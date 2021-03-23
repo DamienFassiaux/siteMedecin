@@ -18,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * message = "Un compte est déjà existant à cette adresse email!"
  * )
  */
-class Utilisateurs 
+class Utilisateurs implements UserInterface
 {
     /**
      * @ORM\Id
@@ -274,6 +274,20 @@ class Utilisateurs
 
     public function getSalt() {}
 
-    public function getRoles() {}
+    public function getRoles() 
+    {
+        //return ['ROLE_USER']; // utilisateur classique
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getUsername() {}
+
 
 }
