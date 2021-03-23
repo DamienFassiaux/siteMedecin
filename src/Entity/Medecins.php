@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\MedecinsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -64,6 +67,8 @@ class Medecins
      */
     private $password;
 
+    public $confirm_password;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -71,7 +76,7 @@ class Medecins
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialite::class, inversedBy="medecins")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $specialite;
 
@@ -82,7 +87,7 @@ class Medecins
 
     /**
      * @ORM\ManyToOne(targetEntity=Departement::class, inversedBy="medecins")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $departement;
 
@@ -209,6 +214,7 @@ class Medecins
 
         return $this;
     }
+
 
     public function getHoraires(): ?string
     {
