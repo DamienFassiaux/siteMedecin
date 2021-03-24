@@ -51,18 +51,70 @@
 
 			<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">{{message}}</div>
 
+    <body>
+         <header>
+            <nav class="nav">
+             <a class="nav_enfant nav_enfant_1"> <div id="logo"></div> </a>
+             <div class="nav_enfant espace_medecin_container">
+             <a class="espace_medecin">
+              <div id="iconmed"></div>
+              <span class="span1 span1_1">espace doc</span>
+              </a>
+             </div>
+
+             <a class="nav_enfant" href="{{ path('security_login') }}">  <span class="span1 span2">Connexion</span></a>
+             <a class="nav_enfant" href="{{ path('security_inscription') }}"><span class="span1 span2">Inscription</span></a>
+            </nav>    
+          </header>
 
 
 
-		{% block body %}{% endblock %}
+     {% endfor %}
+                   
+        {% block body %}{% endblock %}
+        
+         <footer>
+              <section class="footerhaut">
 
-		<footer></footer>
+       <div class="condition">
+        <div id="logocopyright"></div>
+        <p class="para_droit">© 2021 Doc Au Top LLC Tous droits réservés. 
+            <br>Confidentialité et utilisation des cookies
+            <br>Conditions d'utilisation
+        </p>
+       </div>
+
+       <div class="plandusite">
+           <p class="pds_txt">
+            <a class="pds_txta" href="">Espace doc</a> <br>
+            <a class="pds_txta" href="">Connexion</a><br>
+            <a class="pds_txta" href="">Inscription</a><br>
+           </p>
+
+       </div>
+
+     </section>
+
+     <section class="logofooter_container">
+         <div class="logofooter">
+             <div id="email"></div>
+             <div id="facebook"></div>
+             <div id="twitter"></div>
+
+         </div>
+
+     </section>
 
 
-		{% block javascripts %}
-			<script type="text/javascript" src="{{asset('/script.js')}}"></script>
-		{% endblock %}
-	</body>
+		</footer>
 
+
+
+        {% block javascripts %}
+            <script src="{{asset('/script.js')}}"></script>        
+        {% endblock %}
+    </body>
+
+       
 
 </html>
