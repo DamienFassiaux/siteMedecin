@@ -102,6 +102,11 @@ class Utilisateurs implements UserInterface
      */
     private $rdvs;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
     public function __construct()
     {
         $this->avis = new ArrayCollection();

@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Modification médecin
+{% endblock %}
+
+{% block body %}
+ 
+     <h1 class="display-4 text-center my-5">Modification médecin n° <span class="text-info">{{ idMedecin }}</span></h1>
+
+     {{ form_start(formEditMedecin ,{'attr': {'class': 'col-md-5 mx-auto'}} ) }}
+        
+        {{ form_row(formEditMedecin.nom) }}
+
+        {{ form_row(formEditMedecin.prenom) }} 
+
+        {{ form_row(formEditMedecin.telephone) }} 
+
+        {{ form_row(formEditMedecin.centre_medical) }}
+
+        {{ form_row(formEditMedecin.adresse) }}
+
+        {{ form_row(formEditMedecin.code_postal) }}
+
+        {{ form_row(formEditMedecin.ville) }}
+
+        {{ form_row(formEditMedecin.horaires) }}
+
+        {{ form_row(formEditMedecin.Specialite) }}
+
+        {{ form_row(formEditMedecin.Departement) }} 
+
+        <button class="btn btn-secondary mb-5">Modifier le médecin</button>
+
+     {{ form_end(formEditMedecin) }}
+
+{% endblock %}
