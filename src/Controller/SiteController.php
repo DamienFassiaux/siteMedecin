@@ -8,12 +8,23 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Medecins;
+use App\Entity\Utilisateurs;
 use App\Entity\Avis;
 use App\Form\AvisType;
 use App\Repository\MedecinsRepository;
 
 class SiteController extends AbstractController
 {
+    /**
+     * @Route("/", name="home")
+     */
+    public function home(): Response
+    {
+        return $this->render('site/index.html.twig', [
+            'controller_name' => 'Bienvenue',
+        ]);
+    }
+
     /**
      * @Route("/site", name="site")
      */
@@ -37,17 +48,23 @@ class SiteController extends AbstractController
 
           $formAvis->handleRequest($request);
 
+          $user = $this->getUser();
+        
+
+          dump($user);
+
           if($formAvis->isSubmitted() && $formAvis->isValid())
           {
               $avis->setCreatedAt(new \DateTime())
-                       ->setMedecins($medecin);
+                       ->setMedecins($medecin)
+                       ->setUtilisateurs($user);
  
                        $manager->persist($avis);
                        $manager->flush();
  
                        $this->addFlash('success', "L'avis a bien été posté!");
  
-                       return $this->redirectToRoute('site_medecins', [
+                       return $this->redirectToRoute('site_medecin', [
                                  'id' => $medecin->getId() 
                        ]);
           }
