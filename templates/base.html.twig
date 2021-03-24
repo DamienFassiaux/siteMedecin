@@ -9,7 +9,7 @@
 		</title>
 
 		{# Run `composer require symfony/webpack-encore-bundle`
-												           and uncomment the following Encore helpers to start using Symfony UX #}
+														           and uncomment the following Encore helpers to start using Symfony UX #}
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset('/style.css')}}">
@@ -33,6 +33,7 @@
 			<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">{{message}}</div>
 
 
+
     {% endfor %}
     <body>
          <header>
@@ -49,6 +50,7 @@
              <a class="nav_enfant" href="{{ path('security_inscription') }}"><span class="span1 span2">Inscription</span></a>
             </nav>    
           </header>
+
 
 
 
