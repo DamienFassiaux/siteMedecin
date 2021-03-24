@@ -2,20 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateursRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UtilisateursRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
-
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
- * * @UniqueEntity(
- * fields = {"email"},
- * message = "Un compte est déjà existant à cette adresse email!"
+ * @UniqueEntity(
+ *      fields = {"email"},
+ *      message = "Un compte est déjà existant à cette adresse Email !!"
  * )
  */
 class Utilisateurs implements UserInterface
@@ -210,7 +209,7 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-     /**
+    /**
      * @return Collection|Avis[]
      */
     public function getAvis(): Collection
@@ -269,6 +268,7 @@ class Utilisateurs implements UserInterface
 
         return $this;
     }
+
 
     public function eraseCredentials() {}
 
