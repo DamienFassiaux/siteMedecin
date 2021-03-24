@@ -45,28 +45,38 @@ table {
 
 :root {
     font-family: 'Roboto Mono', monospace;
-    --couleurune: #1e4daa;
+    --couleurune: #23c9c9;
     --couleurdeux: rgb(159, 159, 163);
     --couleurtrois: rgb(97, 97, 153);
 }
+:root::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none; 
+    overflow: -moz-scrollbars-none; 
+    }
 .nav {
  
     width: 100%;
     height: 70px;
-    background-color: var(--couleurune);
+    background-image: linear-gradient(to left bottom, #1aaaaa, #03b8af, #00c6b1, #1ad4b0, #36e1ad);
     display: grid;
-    grid-template-columns: 3fr 1fr 0.3fr 0.3fr;
+    grid-template-columns: 2.5fr 1fr 0.3fr 0.4fr;
     border-bottom: 2px solid azure;
 }
-.nav_enfant {
-        border: 1px solid rgba(255, 255, 255, 0);
-        display: flex;
-        justify-content: center;
+#logo {
+    background-image: url("img/logosite2.png");
+    width: 120px;
+    height: 70px;
+    background-size: 85%;
+    background-position: 5px -20px;
+    position: absolute;
+    background-repeat: no-repeat;
+    
 }
-.nav_enfant_1 {
-    margin-left: 20px;
-    display: flex;
-    justify-content: flex-start;
+.nav_enfant {
+        border: 1px solid rgba(0, 0, 0, 0);
+        display: flex;
+        
 }
 .espace_medecin_container {
     display: flex;
@@ -76,7 +86,7 @@ table {
 .espace_medecin {
      width: 65%;
      height: 50px;
-     background-color: azure;
+     background-color: rgb(7, 7, 7);
      border-radius: 5px;
      align-self: center;
      text-align: center;
@@ -87,13 +97,14 @@ table {
     cursor: pointer;
     transition: 0.5s ease;
 }
-.iconmed {
-    background-image: url("img/doctor.svg");
+#iconmed {
+    background-image: url("img/doctor.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    min-width: 40PX;
     width: 40px;
-    margin-top: 5px;
-   
+    margin-top: 5px; 
+    
 }
 .span1 {
     text-transform: uppercase;
@@ -101,12 +112,16 @@ table {
     font-size: 20px;
     align-self: center;
 }
+.ne2 {
+    justify-content: center;
+    cursor: pointer;
+}
 .span1_1 {
     color: var(--couleurune);
 }
 .span2 {
-    font-weight: normal;
-     color: azure;
+    font-weight: bolder;
+     color: rgb(0, 0, 0);
      font-size: 16px;
      text-transform: initial;
 }
@@ -117,17 +132,30 @@ table {
 }
 .container_1 {
       width: 100%;
-      height: 500px;
+      height: 600px;
       background-color: var(--couleurdeux);
 }
 .main {
     width: 80%;
     margin: 0 auto;
-    height: 500px;
+    height: 600px;
     background-color: var(--couleurune);
     display: flex;   
     flex-direction: column;
     justify-content: center;
+}
+.carousel-slide {
+    box-sizing: border-box;
+  overflow: hidden;
+   display: flex;
+   height: 600px;
+   width: 100%;
+}
+img {
+    background-size: auto;
+    background-attachment: fixed;
+    min-width: 100%;
+    min-height: 650px;
 }
 .container_prendre_rdv {   
     width: 100%;
@@ -135,6 +163,7 @@ table {
     height: 50px;
 }
 #formulaire {
+    z-index: 1;
     width: 80%;
     height: 50px;
     background-color: rgba(218, 218, 218, 0.781);
@@ -173,6 +202,100 @@ table {
 }
 footer {
     width: 100%;
-    height: 200px;
+    height: 170px;
     background-color: var(--couleurune);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.footerhaut {
+    margin: 0 auto;
+    width: 80%;
+    height: 80px;
+    border: 0PX solid black;
+    display: flex;
+}
+.condition {
+    display: flex;
+    border: 0px solid brown;
+    width: 50%;
+}
+.plandusite {
+    width: 50%;
+    display: flex;
+    border: 0px solid brown;
+    padding: 5px;
+    justify-content: space-around;
+}
+.pds_txt {
+    line-height: 23px;
+   height: 70px;
+
+}
+.pds_txta {
+    font-weight: bolder;
+    font-size: 13px;
+    color: black;
+   text-decoration: none;
+}
+.pds_txta:hover {
+    color: white;
+}
+#logocopyright {
+    background-image: url("img/logosite.png");
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: -9px -14px;
+    align-self: center;
+    min-width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: black;
+}
+.para_droit {    
+    margin-left: 10px;
+    margin-top: 10px;
+    
+    height: 70px;
+    overflow: hidden;
+    line-height: 20px;
+      font-weight: 600;
+      color: rgb(0, 0, 0);
+      font-size: 13px;
+      text-transform: initial;
+}
+.logofooter_container {
+    margin: 0 auto;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(224, 224, 224);
+    display: flex;
+    justify-content: center;
+}
+.logofooter {
+    width: 15%;
+    height: 50px;
+    border: 0PX solid rgb(148, 9, 9);
+    display: flex;
+    justify-content: space-around;
+}
+#email,#facebook,#twitter {
+     background-size: 100%;
+     background-repeat: no-repeat;
+     background-position: 0px 0px;
+     align-self: center;
+     min-width: 30px;
+     height: 30px;
+}
+#email,#facebook,#twitter:hover {
+    cursor: pointer;
+}
+#email {
+    background-image: url("img/email.png");
+}
+#facebook {
+    background-image: url("img/facebook.png");
+}
+#twitter {
+    background-image: url("img/twitter.png");
 }
