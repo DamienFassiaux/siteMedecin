@@ -27,30 +27,13 @@
 
 	</head>
 
-	<body>
-		<header>
-			<nav class="nav">
-				<a class="nav_enfant nav_enfant_1">
-					<span class="span1 span3">SITE MEDECIN</span>
-				</a>
-				<div class="nav_enfant espace_medecin_container">
-					<a class="espace_medecin">
-						<div class="iconmed"></div>
-						<span class="span1 span1_1">espace médecin</span>
-					</a>
-				</div>
-				<a class="nav_enfant">
-					<span class="span1 span2">Connexion</span>
-				</a>
-				<a class="nav_enfant">
-					<span class="span1 span2">Inscription</span>
-				</a>
-			</nav>
-		</header>
+	
 		{% for message in app.flashes('success') %}
 
 			<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">{{message}}</div>
 
+
+    {% endfor %}
     <body>
          <header>
             <nav class="nav">
@@ -69,7 +52,8 @@
 
 
 
-     {% endfor %}
+
+    
                    
         {% block body %}{% endblock %}
         
