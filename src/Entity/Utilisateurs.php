@@ -86,10 +86,11 @@ class Utilisateurs implements UserInterface
     private $password;
 
 
-   /** @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!")
-    * @Assert\EqualTo(propertyPath="password",
-    * message="Les mots de passe ne correspondent pas")
-    */
+    /** 
+     * @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!")
+     * @Assert\EqualTo(propertyPath="password",
+     * message="Les mots de passe ne correspondent pas")
+     */
     public $confirm_password;
 
     /**
@@ -275,11 +276,15 @@ class Utilisateurs implements UserInterface
     }
 
 
-    public function eraseCredentials() {}
+    public function eraseCredentials()
+    {
+    }
 
-    public function getSalt() {}
+    public function getSalt()
+    {
+    }
 
-    public function getRoles() 
+    public function getRoles()
     {
         //return ['ROLE_USER']; // utilisateur classique
         return $this->roles;
@@ -292,7 +297,7 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-    public function getUsername() {}
-
-
+    public function getUsername()
+    {
+    }
 }
