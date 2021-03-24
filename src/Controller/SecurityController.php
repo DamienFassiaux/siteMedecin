@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+
 class SecurityController extends AbstractController
 {
     /**
@@ -20,6 +21,7 @@ class SecurityController extends AbstractController
      */
     public function formInscription(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder): Response
     {
+
         $utilisateur = new Utilisateurs;
 
         $form = $this->createForm(InscriptionType::class, $utilisateur);
@@ -39,6 +41,22 @@ class SecurityController extends AbstractController
             $this->addFlash('success', "félicitations !! Votre compte a bien été validé ! vous pouvez dès à présent vous connecter");
             return $this->redirectToRoute('site');
         }
+
+        $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $hash = $encoder->encodePassword($utilisateur, $utilisateur->getPassword()); 
+    
+                 $utilisateur->setPassword($hash);
+
+                $manager->persist($utilisateur); 
+                $manager->flush(); 
+
+                $this->addFlash('success', "félicitations !! Votre compte a bien été validé ! vous pouvez dès à présent vous connecter");
+                return $this->redirectToRoute('security_login');
+            }
+
 
         return $this->render('security/inscription.html.twig', [
             'formInscription' => $form->createView()
@@ -74,4 +92,32 @@ class SecurityController extends AbstractController
             'formMedecinInscription' => $form->createView()
         ]);
     }
+
+    /**
+    * AuthenticationUtils permet de récupérer le dernier email saisi au moment de la connexion
+    * AuthenticationUtils pemet de récuperer le message d erreur en cas de mauvaise connexion
+    * 
+    * @Route("/connexion" , name="security_login")
+    */
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+      $error = $authenticationUtils->getLastAuthenticationError();
+
+      $lastUsername = $authenticationUtils->getLastUsername();
+
+      return $this->render('security/login.html.twig', [
+        'error'=> $error,
+        'lastUsername'=> $lastUsername     
+         ]);
+    }
+
+    /**
+     * @Route("/deconnexion", name="security_logout")
+     */
+
+     public function logout()
+     {
+    
+     }
+
 }

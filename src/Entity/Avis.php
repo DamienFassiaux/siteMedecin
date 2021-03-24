@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AvisRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,21 +20,27 @@ class Avis
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner un auteur!")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner un contenu à l'avis!")
      */
     private $contenu;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message = "Veuillez renseigner une note sur 5!")
+     * @Assert\Length(min=0, max=5 ,exactMessage= "Note comprise entre 0 et 5!")
      */
     private $note_accueil;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message = "Veuillez renseigner une note sur 5!")
+     * @Assert\Length(min=0, max=5 ,exactMessage= "Note comprise entre 0 et 5!")
      */
     private $note_pro;
 
@@ -48,6 +55,17 @@ class Avis
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateurs;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner un contenu à l'avis!")
+     */
+    private $auteur;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -122,6 +140,30 @@ class Avis
     public function setUtilisateurs(?Utilisateurs $utilisateurs): self
     {
         $this->utilisateurs = $utilisateurs;
+
+        return $this;
+    }
+
+    public function getAuteur(): ?string
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(string $auteur): self
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

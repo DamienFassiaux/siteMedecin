@@ -28,112 +28,68 @@ class Utilisateurs implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *      message = "Veuillez renseigner un nom ! "
-     * )
-     *  *  @Assert\NotBlank(
-     *      message = "Veuillez renseigner un numéro de téléphone! "
-     * )
+     * @Assert\NotBlank(message = "Veuillez renseigner votre nom!")
      * @Assert\Length(
-     *      min=2,
-     *      max=30,
-     *      minMessage = "Nom trop court",
-     *      maxMessage = "Nom trop long"
-     * 
-     * )
-     *  
+     * min= 2,max= 30, minMessage="Nom trop court",
+     * maxMessage="Nom trop long")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(
-     *      message = "Veuillez renseigner un prenom ! "
-     * )
-     * @Assert\Length(
-     *      min=2,
-     *      max=30,
-     *      minMessage = "Prenom trop court",
-     *      maxMessage = "Prenom trop long"
-     * 
-     * )
-
+     * @Assert\NotBlank(message = "Veuillez renseigner votre prénom!")
+     *  @Assert\Length(
+     * min= 2,max= 30, minMessage="Prénom trop court",
+     * maxMessage="Prénom trop long")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\length(
-     *      min=10,
-     *      max=10,
-     *      exactMessage = "numéro incorrect"
-     *    
-     * )
+     * @Assert\NotBlank(message= "Veuillez renseigner votre numéro!")
+     * @Assert\Length(min=10, max=10 ,exactMessage= "Numéro incorrect")
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *      message = "Veuillez renseigner une adresse ! "
-     * )
+     * @Assert\NotBlank(message = "Veuillez renseigner votre adresse!")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(
-     *      message = "Veuillez renseigner un code postale! "
-     * )
-     * @Assert\length(
-     *      min=5,
-     *      max=5,
-     *      exactMessage = "code postale incorrect"
-     *    
-     * )
+     * @Assert\NotBlank(message = "Veuillez renseigner un code postal!")
+     * @Assert\Length(min=5, max=5 ,exactMessage= "Code postal incorrect")
      */
     private $code_postal;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(
-     *      message = "Veuillez renseigner une ville ! "
-     * )
+     * @Assert\NotBlank(message = "Veuillez renseigner une ville!")
      */
     private $ville;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(
-     *      message = "Veuillez renseigner une adresse mail ! "
-     * )
-     * @Assert\Email(
-     *      message = "veuillez saisir une adresse Email Valide ! "
-     * )
+     * @Assert\NotBlank(message = "Veuillez renseigner une adresse Email!")
+     * @Assert\Email(message = "Veuillez saisir une adresse Email valide!")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(
-     *      message = "Veuillez renseigner un mot de passe ! "
-     * )
-     *@Assert\EqualTo( propertyPath = "confirm_password", message = "Les mots de passes ne correspondent pas !",
-     *                                                     
-     * )
-     * 
+     * @Assert\NotBlank(message = "Veuillez renseigner un mot de passe!")
+     * @Assert\EqualTo(propertyPath="confirm_password",
+     * message="Les mots de passe ne correspondent pas")
      */
     private $password;
 
-    /**
-     * @Assert\NotBlank(
-     *      message = "Veuillez confirmer voitre mot de passe ! "
-     * )
-     * @Assert\EqualTo( propertyPath = "password", message = "Les mots de passes ne correspondent pas !",
-     *                                                   
-     * )
-     */
 
+   /** @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!")
+    * @Assert\EqualTo(propertyPath="password",
+    * message="Les mots de passe ne correspondent pas")
+    */
     public $confirm_password;
 
     /**
@@ -314,23 +270,24 @@ class Utilisateurs implements UserInterface
     }
 
 
-    public function eraseCredentials()
+    public function eraseCredentials() {}
+
+    public function getSalt() {}
+
+    public function getRoles() 
     {
+        //return ['ROLE_USER']; // utilisateur classique
+        return $this->roles;
     }
-    // Renvoi la chaine de caractère non encodé que l'utilisateur a saisi, qui est utilisé à l'origine pour, encoder le mot de passe
 
-    public function getSalt()
+    public function setRoles(array $roles): self
     {
+        $this->roles = $roles;
+
+        return $this;
     }
 
+    public function getUsername() {}
 
 
-    // Renvoi les rôles accordés à l'utilisateur
-
-    public function getRoles()
-    {
-    }
-    public function getUsername()
-    {
-    }
 }
