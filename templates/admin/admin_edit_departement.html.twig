@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Nouveau département
+{% endblock %}
+
+{% block body %}
+ 
+     <h1 class="display-4 text-center my-5">Nouveau département</h1>
+
+     {{ form_start(formDepartement, {'attr': {'class': 'col-md-5 mx-auto'}} ) }}
+        
+        {{ form_row(formDepartement.nom) }}
+
+        {{ form_row(formDepartement.numero) }}
+
+
+        <button class="btn btn-secondary mb-5">Enregistrer le département</button>
+
+     {{ form_end(formDepartement) }}
+
+{% endblock %}

@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class SecurityController extends AbstractController
@@ -105,10 +106,16 @@ class SecurityController extends AbstractController
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'error' => $error,
-            'lastUsername' => $lastUsername
-        ]);
+      
+      //return $this->redirectToRoute('site');
+      
+
+      return $this->render('security/login.html.twig', [
+        'error'=> $error,
+        'lastUsername'=> $lastUsername     
+         ]);
+        
+
     }
 
     /**

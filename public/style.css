@@ -42,6 +42,7 @@ table {
 	border-spacing: 0;
 }
 /************************************************************/
+/****************************************HEADER FOOTER PAGE D'ACCUEIL***************************************************/
 
 :root {
     font-family: 'Roboto Mono', monospace;
@@ -201,6 +202,7 @@ img {
     background-color: var(--couleurdeux);
 }
 footer {
+    border-top: 2px solid white;
     width: 100%;
     height: 170px;
     background-color: var(--couleurune);
@@ -299,3 +301,205 @@ footer {
 #twitter {
     background-image: url("img/twitter.png");
 }
+
+/****************************************INSCRIPTION***************************************************/
+.big_container_inscription {
+
+    background-image: url("img/imgdoc3.jpg");
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+   
+ 
+    display: flex;
+    width: 100%;
+    min-height: 80vh;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+}
+.container_inscription {
+    z-index: 3;
+
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 70vh;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 20px;
+    background-image: linear-gradient(to left bottom, #1aaaaa, #03b8af, #00c6b1, #1ad4b0, #36e1ad);
+}
+.inscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0);
+    width: 80%;
+    min-height: 70vh;
+    margin: 0 auto;
+}
+.titre1_inscription {
+    letter-spacing: 1.5px;
+    color: white;
+    font-size: 25px;
+    align-self: center;
+}
+.titre2_inscription {
+    letter-spacing: 1.5px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    align-self: center;
+}
+.formulaire_inscription {
+    display: flex;
+    flex-direction: column;
+}
+.email_inscription_input {
+    background-color: rgba(137, 43, 226, 0);
+    border-bottom: 2px solid #000000a8;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    border-radius: 0px;
+    color: white;
+    font-size: 18px;
+}
+
+
+
+
+
+
+/****************************************CONNEXION***************************************************/
+
+.bcontinuer {
+    margin-top: 30px;
+    background-color:#000000;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    padding: 15px;
+    border-radius: 30px;
+    align-self: center;
+    font-size: 14px;
+}
+.bcontinuer:hover {
+    transition: 0.2s ease;
+    color: #23c9c9;
+    opacity: 0.8;
+}
+.big_container_connexion{
+
+    background-image: url("img/imgdoc3.jpg");
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+   
+ 
+    display: flex;
+    width: 100%;
+    min-height: 80vh;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+
+
+}
+.filter_blur {
+
+    width: 100%;
+    min-height: 80vh;
+    background-color: rgba(0, 0, 0, 0.418);
+    position: absolute;
+
+    z-index: 2;
+}
+.container_connexion {
+    z-index: 3;
+
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 60vh;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 20px;
+    background-image: linear-gradient(to left bottom, #1aaaaa, #03b8af, #00c6b1, #1ad4b0, #36e1ad);
+}
+.connexion {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0);
+    width: 80%;
+    min-height: 60vh;
+    margin: 0 auto;
+}
+.logo_connexion {
+    background-image: url("img/logosite2.png");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: -8px -15px;
+
+    align-self: center;
+    background-color: #23c9c9;
+    height: 105px;
+    width: 105px;
+    border-radius: 55px;
+  }
+.titre1_connexion {
+    letter-spacing: 1.5px;
+    color: white;
+    font-size: 25px;
+    align-self: center;
+}
+.formulaire_connexion {
+    display: flex;
+    flex-direction: column;
+}
+.email_connexion {
+    align-self: center;
+}  
+.password_connexion {
+    align-self: center;
+}
+
+.email_connexion_input{   
+    background-color: rgba(137, 43, 226, 0);
+    border-bottom: 2px solid #000000a8;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+}
+.password_connexion_input {
+    color: white;
+    background-color: rgba(137, 43, 226, 0);
+    border-bottom: 2px solid #000000a8;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+input[type=password]:focus {
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.8; /* Firefox */  
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    opacity: 0.8;
+  }
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    opacity: 0.8;
+  
+  }

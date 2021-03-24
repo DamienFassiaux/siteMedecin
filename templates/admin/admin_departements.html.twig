@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Gestion des départements
+
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des départements</h1>
+
+    {% for message in app.flashes('success') %}
+
+        <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+         {{ message }}
+        </div>
+
+    {% endfor %}
+
+    <table class="table table-bordered text-center">
+
+        <tr>
+            
+            {% for oneColonne in colonnes %}
+
+               
+               <th> {{ oneColonne|upper }}</th> 
+
+
+            {% endfor %}
+
+
+        </tr>
+            
+            {% for oneDepartement in departementsBdd %}
+
+               <tr>
+                  <td>{{ oneDepartement.id }}</td>
+                  <td>{{ oneDepartement.nom }}</td>
+                  <td>{{ oneDepartement.numero }}</td>
+                  
+                
+
+                  
+
+                  <td><a href="{{ path('admin_edit_departement', {'id': oneDepartement.id}) }}" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
+
+                  <td><a href="{{ path('admin_remove_departement', {'id': oneDepartement.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer ce département ?'))"><i class="fas fa-trash-alt"></i></a></td>               
+                  
+               </tr>
+
+            {% endfor %}
+
+    </table>
+
+{% endblock %}

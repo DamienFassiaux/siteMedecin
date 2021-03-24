@@ -28,19 +28,21 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: chain_provider
+
+
+            provider: in_database
+
 
             form_login:
                login_path: security_login
                check_path: security_login
+               
 
             logout:
                path: security_logout
-               target: sitemedecin
-            #login medecin
-            # form_login: 
-            #     login_path: medecin_login 
-            #     check_path: medecin_login
+
+               target: site
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
