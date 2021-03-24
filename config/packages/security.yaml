@@ -3,6 +3,8 @@ security:
     encoders:
         App\Entity\Utilisateurs:
             algorithm: bcrypt
+        App\Entity\Medecins:
+            algorithm: bcrypt
             
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

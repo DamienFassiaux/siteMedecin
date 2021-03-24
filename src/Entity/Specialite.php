@@ -68,7 +68,7 @@ class Specialite
         return $this;
     }
 
-   
+
     /**
      * @return Collection|Medecins[]
      */
