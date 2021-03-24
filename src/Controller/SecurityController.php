@@ -106,10 +106,15 @@ class SecurityController extends AbstractController
 
       $lastUsername = $authenticationUtils->getLastUsername();
 
+      
+      //return $this->redirectToRoute('site');
+      
+
       return $this->render('security/login.html.twig', [
         'error'=> $error,
         'lastUsername'=> $lastUsername     
          ]);
+        
     }
 
     /**

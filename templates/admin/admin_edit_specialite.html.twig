@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Nouvelle spécialité
+{% endblock %}
+
+{% block body %}
+ 
+     <h1 class="display-4 text-center my-5">Nouvelle spécialité</h1>
+
+     {{ form_start(formSpecialite, {'attr': {'class': 'col-md-5 mx-auto'}} ) }}
+        
+        {{ form_row(formSpecialite.nom) }}
+
+        {{ form_row(formSpecialite.description) }}
+
+
+        <button class="btn btn-secondary mb-5">Enregistrer la spécialité</button>
+
+     {{ form_end(formSpecialite) }}
+
+{% endblock %}

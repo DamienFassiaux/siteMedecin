@@ -5,8 +5,34 @@
 
 {% block body %}
  
+   <h1 class="display-4 text-center my-5"> Docteur {{ medecin.nom }}</h1>
+
+       {% for message in app.flashes('success') %}
+
+       <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+      {{ message }}
+       </div>
+
+      {% endfor %}
+
+
+       <div class="row">
+
+   <div class="col-md-8 mx-auto">
+
+          <div class="card mb-4 shadow-sm">
+           {# <img src="{{ asset('uploads/images/' ~ article.image) }}" alt="{{article.title}} class="img-user-articles"> #}
+
+             <h4 class="text-center">Docteur {{medecin.nom}} </h4>
+               <div class="card-body">
+
+               <p class="card-text"> {{medecin.specialite.nom}}
+               </p>
+
+            </div>
+          </div>
  
- <h4 class="display-4 text-center my-5"> Donner votre avis...</h4>
+   <h4 class="display-4 text-center my-5"> Donner votre avis...</h4>
 
            {{ form_start(formAvis,{'attr': {'class': 'col-md-4 mx-auto'}}) }} 
 
@@ -22,21 +48,23 @@
 
              <button type="submit" class="btn btn-secondary">Poster votre avis</button>
 
-            {{ form_end(formAvis)}}
+            {{ form_end(formAvis)}} 
 
 
 
 
-          <H4 class="my-5"> Vos réactions... </h4>
-          {#<div class="row">  {% for avis in Medecins.avis %}
+          <H4 class=" display-4 my-5"> Derniers avis... </h4>
+          <div class="card mb-4 row ">  {% for avis in medecin.avis %}
           
 
-        <div class="col_md-4"> <span><strong> {{ avis.auteur }}</strong></span> </div>
-        <small class="font-italic"> Posté le {{ avis.createdAt|date('d/M/Y') }} à {{ avis.createdAt|date('h:i:s') }} 
+        <div class="col_md-4"> <span><strong> {{ avis.auteur }} </strong></span> </div>
+        <div class="col_md-4"> <span><strong>Note accueil: {{ avis.noteAccueil }}/5 </strong></span> 
+                              <span><strong>Note compétences: {{ avis.notePro }}/5 </strong></span></div>
+        <small class="font-italic">  Posté le {{ avis.createdAt|date('d/M/Y') }} à {{ avis.createdAt|date('h:i:s') }} 
 
           <div class="col_md-8"> {{ avis.contenu|striptags }} </div>
 
-          {% endfor %}#}
+          {% endfor %}
           
           </div>
         </div>
