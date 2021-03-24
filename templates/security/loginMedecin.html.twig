@@ -1,21 +1,20 @@
 {% extends "base.html.twig" %}
-
 {% block title %}
-	Identifiez-vous
+	Identification medecin
 {% endblock %}
 
 {% block body %}
-
 	<h1 class="display-4 text-center my-5">
-		Identifiez-vous....</h1>
-
-	{% for message in app.flashes('success') %}
-
-		<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
-			{{ message }}
-		</div>
-
-	{% endfor %}
+		Identifiez Vous
+	</h1>
+	{# 
+		{% for message in app.flashes('success') %}
+	
+			<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+				{{ message }}
+			</div>
+	
+		{% endfor %} #}
 
 	{% if error %}
 
@@ -25,7 +24,6 @@
 		</div>
 
 	{% endif %}
-
 
 	<form method="post" class="col-md-5 mx-auto" action="{{ path('medecin_login') }}">
 		<div class="form-group">
@@ -39,5 +37,6 @@
 
 		<button type="submit" class="btn btn-primary">Continuer</button>
 	</form>
+
 
 {% endblock %}
