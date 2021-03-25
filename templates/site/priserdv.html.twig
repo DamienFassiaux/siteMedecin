@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}gestion prise de rendez vous
+{% endblock %}
+
+{% block body %}
+	<h1 class="display-4 text-center my-5">Prise de rendez vous!!!</h1>
+
+	{{ form_start(formRdv ,{'attr': {'class': 'col-md-5 mx-auto'}}
+	) }}
+	{{ form_row(formRdv.date) }}
+	{{ form_row(formRdv.horaires) }}
+	{{ form_row(formRdv.utilisateurs) }}
+	{# {{ form_row(formRdv.mesRdv) }} #}
+
+
+	<button class="btn btn-secondary mb-5">Confirmer le rendez vous</button>
+	{{ form_end(formRdv) }}
+
+{% endblock %}
