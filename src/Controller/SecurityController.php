@@ -15,6 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
+
 class SecurityController extends AbstractController
 {
     /**
@@ -25,7 +26,8 @@ class SecurityController extends AbstractController
 
         $utilisateur = new Utilisateurs;
 
-        $form = $this->createForm(InscriptionType::class, $utilisateur);
+        $form = $this->createForm(InscriptionType::class, $utilisateur, ['validation_groups' => ['inscription']]);
+
         $form->handleRequest($request);
         dump($request);
         dump($utilisateur);
@@ -36,6 +38,7 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($utilisateur, $utilisateur->getPassword());
 
             $utilisateur->setPassword($hash);
+            $utilisateur->setRoles(["ROLE_USER"]);
             $manager->persist($utilisateur);
             $manager->flush();
 
@@ -70,7 +73,9 @@ class SecurityController extends AbstractController
     {
         $medecin = new Medecins;
 
-        $form = $this->createForm(MedecinInscriptionType::class, $medecin);
+        $form = $this->createForm(MedecinInscriptionType::class, $medecin, [ 
+            'validation_groups' => ['inscription'] 
+        ]);
         $form->handleRequest($request);
         dump($request);
         dump($medecin);
@@ -81,6 +86,7 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($medecin, $medecin->getPassword());
 
             $medecin->setPassword($hash);
+            $medecin->setRoles(["ROLE_DOC"]);
             $manager->persist($medecin);
             $manager->flush();
 

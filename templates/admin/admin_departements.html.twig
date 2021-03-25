@@ -8,6 +8,7 @@
 {% block body %}
 
     <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des départements</h1>
+    <div class="text-center my-5"> <button class="btn btn-secondary mb-5"><a href="{{ path('admin_new_departement') }}"</a>Créer un département</button></div>
 
     {% for message in app.flashes('success') %}
 

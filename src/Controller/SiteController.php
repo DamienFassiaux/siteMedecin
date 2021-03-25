@@ -31,10 +31,18 @@ class SiteController extends AbstractController
     /**
      * @Route("/site", name="site")
      */
-    public function index(): Response
+    public function index(MedecinsRepository $repo): Response
     {
+
+        dump($repo); 
+
+        $medecins = $repo->findAll(); 
+
+        dump($medecins);
+
         return $this->render('site/index.html.twig', [
-            'controller_name' => 'Bienvenue',
+            'title' => 'Liste des médecins',
+            'medecins' => $medecins 
         ]);
     }
 

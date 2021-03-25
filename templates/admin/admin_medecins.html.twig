@@ -9,6 +9,7 @@
 
     <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des médecins</h1>
 
+
     {% for message in app.flashes('success') %}
 
         <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
@@ -20,8 +21,7 @@
     <table class="table table-bordered text-center">
 
         <tr>
-            {# colonnes: variable Twig envoyé via AdminController qui contient tout les noms des champs/colonnes de la table Article #}
-            {# oneColonne: variable de réception qui receptionne le nom d'une colonne par tour de boucle FOR #}
+    
             {% for oneColonne in colonnes %}
 
                {% if oneColonne != "password" %}
@@ -48,12 +48,13 @@
                   <td>{{ oneMedecin.nom }}</td>
                   <td>{{ oneMedecin.prenom }}</td>
                   <td>{{ oneMedecin.telephone }}</td>
-                  <td>{{ oneMedecin.centreMedical }}</td>
+                  <td>{{ oneMedecin.centreMedical }}</td>   
                   <td>{{ oneMedecin.adresse }}</td>
                   <td>{{ oneMedecin.codePostal }}</td>
                   <td>{{ oneMedecin.ville }}</td>
                   <td>{{ oneMedecin.email }}</td>
                   <td>{{ oneMedecin.horaires }}</td>
+                  <td>{{ oneMedecin.roles[0] }}</td>
                   <td>{{ oneMedecin.specialite.nom }}</td>
                   <td>{{ oneMedecin.departement.numero }}</td>
                   <td>{{ oneMedecin.avis|length }}</td>

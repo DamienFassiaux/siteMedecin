@@ -1,13 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    BACKOFFICE | Nouvelle spécialité
+    BACKOFFICE | Gestion Spécialités
 {% endblock %}
 
 {% block body %}
- 
-     <h1 class="display-4 text-center my-5">Nouvelle spécialité</h1>
+     
+       {% if idSpecialite %}
 
+       <h1 class="display-4 text-center my-5">Modification spécialité n° <span class="text-info">{{ idSpecialite }}</span></h1>
+
+      {% else %}
+
+     <h1 class="display-4 text-center my-5">Nouvelle spécialité</h1>
+     
+      {% endif %}
      {{ form_start(formSpecialite, {'attr': {'class': 'col-md-5 mx-auto'}} ) }}
         
         {{ form_row(formSpecialite.nom) }}

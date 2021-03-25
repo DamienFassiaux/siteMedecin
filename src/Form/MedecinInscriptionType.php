@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class MedecinInscriptionType extends AbstractType
 {
@@ -58,13 +60,24 @@ class MedecinInscriptionType extends AbstractType
             ->add('departement', EntityType::class, [
                 'class' => Departement::class,
                 'choice_label' => 'nom'
-            ]);
+            ])
+            ->add('roles', CollectionType::class, [  
+                'label_format' => 'Role utilisateur',
+                'entry_type' => ChoiceType::class,  
+                'entry_options' => [
+                    'choices' => [
+                 'Utilisateur'=> 'ROLE_DOC'
+                    ]
+                ]
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Medecins::class,
+            'validation_groups' => ['inscription'] 
         ]);
     }
 }

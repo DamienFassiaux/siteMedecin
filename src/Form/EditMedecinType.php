@@ -11,6 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EditMedecinType extends AbstractType
 {
@@ -36,16 +38,18 @@ class EditMedecinType extends AbstractType
             ->add('Specialite',  EntityType::class, [
                     'class' => Specialite::class,
                     'choice_label' => 'nom' ])
-                ->add('Departement', EntityType::class, [
+             ->add('Departement', EntityType::class, [
                     'class' => Departement::class,
-                    'choice_label' => 'nom' ]);
-        ;
+                    'choice_label' => 'nom' ])
+                    ;
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Medecins::class,
+            'validation_groups' => ['inscription'] 
         ]);
     }
 }

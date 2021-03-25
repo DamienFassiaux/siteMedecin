@@ -1,12 +1,22 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    BACKOFFICE | Nouveau département
+    BACKOFFICE | Gestion Département
 {% endblock %}
 
 {% block body %}
- 
+
+
+
+      {% if idDepartement %}
+
+         <h1 class="display-4 text-center my-5">Modification département n° <span class="text-info">{{ idDepartement }}</span></h1>
+
+      {% else %}
+
      <h1 class="display-4 text-center my-5">Nouveau département</h1>
+
+      {% endif %}
 
      {{ form_start(formDepartement, {'attr': {'class': 'col-md-5 mx-auto'}} ) }}
         
