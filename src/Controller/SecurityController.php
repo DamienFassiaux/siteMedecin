@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class SecurityController extends AbstractController
@@ -102,20 +101,21 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+
         $error = $authenticationUtils->getLastAuthenticationError();
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
-      
-      //return $this->redirectToRoute('site');
-      
 
-      return $this->render('security/login.html.twig', [
-        'error'=> $error,
-        'lastUsername'=> $lastUsername     
-         ]);
-        
 
+        //return $this->redirectToRoute('site');
+        $this->addFlash('success', "félicitations !! Bienvenue dans votre espace personnel");
+
+        return $this->render('security/login.html.twig', [
+            'error' => $error,
+            'lastUsername' => $lastUsername
+        ]);
+        return $this->redirectToRoute('site');
     }
 
     /**
@@ -130,15 +130,15 @@ class SecurityController extends AbstractController
      * 
      * @Route("/medecin/connexion" , name="medecin_login")
      */
-    public function loginMedecin(AuthenticationUtils $authenticationUtils): Response
-    {
-        $error = $authenticationUtils->getLastAuthenticationError();
+    //     public function loginMedecin(AuthenticationUtils $authenticationUtils): Response
+    //     {
+    //         $error = $authenticationUtils->getLastAuthenticationError();
 
-        $lastUsername = $authenticationUtils->getLastUsername();
+    //         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/loginmedecin.html.twig', [
-            'error' => $error,
-            'lastUsername' => $lastUsername
-        ]);
-    }
+    //         return $this->render('security/loginmedecin.html.twig', [
+    //             'error' => $error,
+    //             'lastUsername' => $lastUsername
+    //         ]);
+    //     }
 }
