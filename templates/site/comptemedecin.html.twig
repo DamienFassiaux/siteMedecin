@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block tiltes %}
+
+	compte medecin
+{% endblock %}
+
+{% block body %}
+	<h1 class="display-4 text-center my-5">Bienvenue dans votre espace personnel Docteur
+		<span class="text-success">{{nom}}</span>
+		, ici vous pouvez gérer votre compte
+	</h1>
+
+	<div>Nom:{{nom}}</div>
+	<div>Prenom :{{prenom}}</div>
+	<div>Adresse :{{adresse}}</div>
+
+	<div>ville :{{ville}}</div>
+	<div>code postale :{{codePostale}}</div>
+	<div>specialite :{{specialite.nom}}</div>
+
+
+{% endblock %}

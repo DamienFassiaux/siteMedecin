@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Gestion des médecins
+
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des médecins</h1>
+
+
+    {% for message in app.flashes('success') %}
+
+        <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+         {{ message }}
+        </div>
+
+    {% endfor %}
+
+    <table class="table table-bordered text-center">
+
+        <tr>
+    
+            {% for oneColonne in colonnes %}
+
+               {% if oneColonne != "password" %}
+
+               
+               <th> {{ oneColonne|upper }}</th> 
+
+
+               {% endif %}
+
+            
+            {% endfor %}
+
+                  <th>SPECIALITE</th>
+                  <th>DEPARTEMENT</th>
+                  <th> NB AVIS</th>
+
+        </tr>
+            
+            {% for oneMedecin in medecinsBdd %}
+
+               <tr>
+                  <td>{{ oneMedecin.id }}</td>
+                  <td>{{ oneMedecin.nom }}</td>
+                  <td>{{ oneMedecin.prenom }}</td>
+                  <td>{{ oneMedecin.telephone }}</td>
+                  <td>{{ oneMedecin.centreMedical }}</td>   
+                  <td>{{ oneMedecin.adresse }}</td>
+                  <td>{{ oneMedecin.codePostal }}</td>
+                  <td>{{ oneMedecin.ville }}</td>
+                  <td>{{ oneMedecin.email }}</td>
+                  <td>{{ oneMedecin.horaires }}</td>
+                  <td>{{ oneMedecin.roles[0] }}</td>
+                  <td>{{ oneMedecin.specialite.nom }}</td>
+                  <td>{{ oneMedecin.departement.numero }}</td>
+                  <td>{{ oneMedecin.avis|length }}</td>
+                  
+                  {#<td><img src="{{ oneMedecin.image }}" alt="{{ oneMedecin.nom }}" class="img-admin-medecins"></td>#}
+
+                  
+
+                  <td><a href="{{ path('admin_edit_medecin', {'id': oneMedecin.id}) }}" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
+
+                  <td><a href="{{ path('admin_remove_medecin', {'id': oneMedecin .id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer ce médecin ?'))"><i class="fas fa-trash-alt"></i></a></td>               
+                  
+               </tr>
+
+            {% endfor %}
+
+    </table>
+
+{% endblock %}

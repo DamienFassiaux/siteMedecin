@@ -9,7 +9,7 @@
 		</title>
 
 		{# Run `composer require symfony/webpack-encore-bundle`
-												           and uncomment the following Encore helpers to start using Symfony UX #}
+																																						           and uncomment the following Encore helpers to start using Symfony UX #}
 
 		{% block stylesheets %}
 			<link rel="stylesheet" href="{{asset('/style.css')}}">
@@ -17,20 +17,26 @@
 			<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
 
 
-	<!--		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> -->
 
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 			<link rel="stylesheet" href="{{ asset('/style.css') }}">
 		{% endblock %}
 
 	</head>
 
-	
-		{% for message in app.flashes('success') %}
 
-			<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">{{message}}</div>
+	{% for message in app.flashes('success') %}
+
+		<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">{{message}}</div>
+
+
+	{% endfor %}
+	<body>
+		<header>
+			<nav class="nav">
 
 
     {% endfor %}
@@ -40,72 +46,89 @@
 
              <div class="nav_enfant nav_enfant_1"> <a href="{{ path('site') }}" id="logo"></a> </div>
 
+
              <div class="nav_enfant espace_medecin_container">
-             <a class="espace_medecin">
+
+			  {% if is_granted('ROLE_ADMIN') %} 
+
+			   <a class="nav_enfant" href="{{ path('admin') }}">  <span class="span1 span2">BACKOFFICE</span></a>
+
+			{% endif %} 
+
+             <a class="espace_medecin" href="{{ path('medecin_inscription') }}">
               <div id="iconmed"></div>
               <span class="span1 span1_1">espace doc</span>
               </a>
              </div>
 
-             <a class="nav_enfant nav_enfantco" href="{{ path('security_login') }}">  <span class="span1 span2">Connexion</span></a>
-             <a class="nav_enfant nav_enfantco" href="{{ path('security_inscription') }}"><span class="span1 span2">Inscription</span></a>
-            </nav>    
-          </header>
+              {% if app.user %} 
+
+					<a class="nav_enfant" href="">
+						<span class="span1 span2">Mon compte</span>
+					</a>
+
+					<a class="nav_enfant" href="{{ path('security_logout') }}">
+						<span class="span1 span2">Déconnexion</span>
+					</a>
+
+				{% else %}
+
+			<a class="nav_enfant nav_enfantco" href="{{ path('security_login') }}">  <span class="span1 span2">Connexion</span></a>
+       <a class="nav_enfant nav_enfantco" href="{{ path('security_inscription') }}"><span class="span1 span2">Inscription</span></a>
+
+				{% endif %}
+			</nav>
+		</header>
 
 
 
+		{% block body %}{% endblock %}
 
-    
-                   
-        {% block body %}{% endblock %}
-        
-         <footer>
-              <section class="footerhaut">
+		<footer>
+			<section class="footerhaut">
 
-       <div class="condition">
-        <div id="logocopyright"></div>
-        <p class="para_droit">© 2021 Doc Au Top LLC Tous droits réservés. 
-            <br>Confidentialité et utilisation des cookies
-            <br>Conditions d'utilisation
-        </p>
-       </div>
+				<div class="condition">
+					<div id="logocopyright"></div>
+					<p class="para_droit">© 2021 Doc Au Top LLC Tous droits réservés.
+						<br>Confidentialité et utilisation des cookies
+						<br>Conditions d'utilisation
+					</p>
+				</div>
 
-       <div class="plandusite">
-
-           <p class="pds_txt">
-            <a class="pds_txta" href="">Espace doc</a> <br>
-            <a class="pds_txta" href="">Connexion</a><br>
-            <a class="pds_txta" href="">Inscription</a><br>
-           </p>
-
-           <p class="pds_txt">
+				<div class="plandusite">
+					<p class="pds_txt">
+						<a class="pds_txta" href="">Espace doc</a>
+						<br>
+						<a class="pds_txta" href="">Connexion</a><br>
+						<a class="pds_txta" href="">Inscription</a><br>
+					</p>
+             <p class="pds_txt">
            <a class="pds_txta" href="">Page d'accueil</a><br> 
            </p>
-           
-       </div>
 
-     </section>
-
-     <section class="logofooter_container">
-         <div class="logofooter">
-             <div id="email"></div>
-             <div id="facebook"></div>
-             <div id="twitter"></div>
-            
-         </div>
-
-     </section>
+				</div>
 
 
-		</footer>
+			</section>
+
+			<section class="logofooter_container">
+				<div class="logofooter">
+					<div id="email"></div>
+					<div id="facebook"></div>
+					<div id="twitter"></div>
+
+				
 
 
+				</section>
 
-        {% block javascripts %}
-            <script src="{{asset('/script.js')}}"></script>        
-        {% endblock %}
-    </body>
 
-       
+			</footer>
 
+
+			{% block javascripts %}
+				<script src="{{asset('/script.js')}}"></script>
+			{% endblock %}
+		</body>
+	</body>
 </html>

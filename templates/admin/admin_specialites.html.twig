@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Gestion des spécialités
+
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des spécialités</h1>
+    <div class="text-center my-5"> <button class="btn btn-secondary mb-5"><a href="{{ path('admin_new_specialite') }}"</a>Créer une spécialité</button></div>
+
+    {% for message in app.flashes('success') %}
+
+        <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+         {{ message }}
+        </div>
+
+    {% endfor %}
+
+    <table class="table table-bordered text-center">
+
+        <tr>
+            
+            {% for oneColonne in colonnes %}
+
+               
+               <th> {{ oneColonne|upper }}</th> 
+
+
+            {% endfor %}
+
+
+        </tr>
+            
+            {% for oneSpecialite in specialitesBdd %}
+
+               <tr>
+                  <td>{{ oneSpecialite.id }}</td>
+                  <td>{{ oneSpecialite.nom }}</td>
+                  <td>{{ oneSpecialite.description }}</td>
+                  
+                
+
+                  
+
+                  <td><a href="{{ path('admin_edit_specialite', {'id': oneSpecialite.id}) }}" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
+
+                  <td><a href="{{ path('admin_remove_specialite', {'id': oneSpecialite.id}) }}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cette spécialité ?'))"><i class="fas fa-trash-alt"></i></a></td>               
+                  
+               </tr>
+
+            {% endfor %}
+
+    </table>
+
+{% endblock %}

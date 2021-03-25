@@ -6,14 +6,19 @@ use App\Repository\MedecinsRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MedecinsRepository::class)
+ * @UniqueEntity(
+ *      fields = {"email"},
+ *      message = "Un compte est déjà existant à cette adresse Email !!"
+ * )
  */
-class Medecins
+class Medecins implements UserInterface
 {
     /**
      * @ORM\Id
@@ -24,53 +29,81 @@ class Medecins
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner votre nom!")
+     * @Assert\Length(
+     * min= 2,max= 30, minMessage="Nom trop court",
+     * maxMessage="Nom trop long")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner votre prénom!")
+     * @Assert\Length(
+     * min= 2,max= 30, minMessage="Prénom trop court",
+     * maxMessage="Prénom trop long")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message= "Veuillez renseigner votre numéro!")
+     * @Assert\Length(min=10, max=10 ,exactMessage= "Numéro incorrect")
      */
     private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
      */
     private $centre_medical;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner votre adresse!")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message = "Veuillez renseigner un code postal!")
+     * @Assert\Length(min=5, max=5 ,exactMessage= "Code postal incorrect")
      */
     private $code_postal;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner une ville!")
      */
     private $ville;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner une adresse Email!")
+     * @Assert\Email(message = "Veuillez saisir une adresse Email valide!")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner un mot de passe!")
+     * @Assert\EqualTo(propertyPath="confirm_password",
+     * message="Les mots de passe ne correspondent pas")
      */
     private $password;
 
+    /**
+     * @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!")
+     * @Assert\EqualTo(propertyPath="password",
+     * message="Les mots de passe ne correspondent pas")
+     */
     public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Veuillez renseigner les horaires!")
      */
     private $horaires;
 
@@ -95,6 +128,11 @@ class Medecins
      * @ORM\OneToMany(targetEntity=Rdv::class, mappedBy="medecins", orphanRemoval=true)
      */
     private $rdvs;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     public function __construct()
     {
@@ -310,5 +348,31 @@ class Medecins
         }
 
         return $this;
+    }
+
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function getRoles()
+    {
+        //return ['ROLE_USER']; // utilisateur classique
+       return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getUsername()
+    {
     }
 }
