@@ -362,7 +362,7 @@ class Medecins implements UserInterface
     public function getRoles()
     {
         //return ['ROLE_USER']; // utilisateur classique
-        return $this->roles;
+       return $this->roles;
     }
 
     public function setRoles(array $roles): self

@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACKOFFICE | Modification avis
+{% endblock %}
+
+{% block body %}
+ 
+     <h1 class="display-4 text-center my-5">Modification avis n° <span class="text-info">{{ idAvis }}</span></h1>
+
+     {{ form_start(formAvis,{'attr': {'class': 'col-md-4 mx-auto'}}) }} 
+
+           {{ form_row(formAvis.titre) }}
+
+            {{ form_row(formAvis.auteur) }} 
+
+             {{ form_row(formAvis.contenu) }}
+
+             {{ form_row(formAvis.note_accueil) }}
+
+             {{ form_row(formAvis.note_pro) }}
+
+             <button type="submit" class="btn btn-secondary">Modifier l'avis</button>
+
+            {{ form_end(formAvis)}}
+
+{% endblock %}

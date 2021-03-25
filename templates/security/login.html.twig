@@ -15,7 +15,7 @@
    <div class="logo_connexion"></div>
    <h1 class="display-4 text-center my-5 titre1_connexion"> Identifiez-vous</h1>
 
-  <!-- {% for message in app.flashes('success') %}
+     {% for message in app.flashes('success') %}
      <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
      {{ message }}
      </div>
@@ -24,7 +24,7 @@
      <div class="col-md-3 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
       {{error.messageKey|trans(error.messageData, 'security') }}    
      </div>
-       {% endif %} -->
+       {% endif %} 
 
 
      <form method="post" class="col-md-5 mx-auto formulaire_connexion" action="{{ path('security_login') }}">
