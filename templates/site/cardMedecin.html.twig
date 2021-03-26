@@ -1,73 +1,117 @@
- {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 
-{% block title %}Détail du médecin{% endblock %}
+{% block title %}Détail du médecin
+{% endblock %}
 
 {% block body %}
- 
-   <h1 class="display-4 text-center my-5"> Docteur {{ medecin.nom }}</h1>
 
-       {% for message in app.flashes('success') %}
+	<h1 class="display-4 text-center my-5">
+		Docteur
+		{{ medecin.nom }}</h1>
 
-       <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
-      {{ message }}
-       </div>
+	{% for message in app.flashes('success') %}
 
-      {% endfor %}
+		<div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
+			{{ message }}
+		</div>
 
-
-       <div class="row">
-
-   <div class="col-md-8 mx-auto">
-
-          <div class="card mb-4 shadow-sm">
-           {# <img src="{{ asset('uploads/images/' ~ article.image) }}" alt="{{article.title}} class="img-user-articles"> #}
-
-             <h4 class="text-center">Docteur {{medecin.nom}} </h4>
-               <div class="card-body">
-
-               <p class="card-text"> {{medecin.specialite.nom}}
-               </p>
-
-            </div>
-          </div>
- 
-   <h4 class="display-4 text-center my-5"> Donner votre avis...</h4>
-
-           {{ form_start(formAvis,{'attr': {'class': 'col-md-4 mx-auto'}}) }} 
-
-           {{ form_row(formAvis.titre, {'label': "Titre de l'avis"}) }}
-
-            {{ form_row(formAvis.auteur, {'attr':{'placeholder':"Saisir votre nom"}, 'label': "Nom d'utilisateur"}) }} 
-
-             {{ form_row(formAvis.contenu, {'label': "Saisir votre commentaire"}) }}
-
-             {{ form_row(formAvis.note_accueil, {'label': "Noter l'accueil"}) }}
-
-             {{ form_row(formAvis.note_pro, {'label': "Noter les compétences"}) }}
-
-             <button type="submit" class="btn btn-secondary">Poster votre avis</button>
-
-            {{ form_end(formAvis)}} 
+	{% endfor %}
 
 
+	<div class="row">
+
+		<div class="col-md-8 mx-auto">
+
+			<div
+				class="card mb-4 shadow-sm">
+				{# <img src="{{ asset('uploads/images/' ~ article.image) }}" alt="{{article.title}} class="img-user-articles"> #}
+
+				<h4 class="text-center">Docteur
+					{{medecin.nom}}
+				</h4>
+				<div class="card-body">
+
+					<p class="card-text">
+						{{medecin.specialite.nom}}
+					</p>
+
+				</div>
+			</div>
+
+			<h4 class="display-4 text-center my-5">
+				Donner votre avis...</h4>
+
+			{{ form_start(formAvis,{'attr': {'class': 'col-md-4 mx-auto'}}) }}
+
+			{{ form_row(formAvis.titre, {'label': "Titre de l'avis"}) }}
+
+			{{ form_row(formAvis.auteur, {'attr':{'placeholder':"Saisir votre nom"}, 'label': "Nom d'utilisateur"}) }}
+
+			{{ form_row(formAvis.contenu, {'label': "Saisir votre commentaire"}) }}
+
+			{{ form_row(formAvis.note_accueil, {'label': "Noter l'accueil"}) }}
+
+			{{ form_row(formAvis.note_pro, {'label': "Noter les compétences"}) }}
+
+			<button type="submit" class="btn btn-secondary">Poster votre avis</button>
+
+			{{ form_end(formAvis)}}
 
 
-          <H4 class=" display-4 my-5"> Derniers avis... </h4>
-          <div class="card mb-4 row ">  {% for avis in medecin.avis %}
-          
+			<H4 class=" display-4 my-5">
+				Derniers avis...
+			</h4>
+			<div class="card mb-4 row ">
+				{% for avis in medecin.avis %}
 
-        <div class="col_md-4"> <span><strong> {{ avis.auteur }} </strong></span> </div>
-        <div class="col_md-4"> <span><strong>Note accueil: {{ avis.noteAccueil }}/5 </strong></span> 
-                              <span><strong>Note compétences: {{ avis.notePro }}/5 </strong></span></div>
-        <small class="font-italic">  Posté le {{ avis.createdAt|date('d/M/Y') }} à {{ avis.createdAt|date('h:i:s') }} 
 
-          <div class="col_md-8"> {{ avis.contenu|striptags }} </div>
+					<div class="col_md-4">
+						<span>
+							<strong>
+								{{ avis.auteur }}
+							</strong>
+						</span>
+					</div>
+					<div class="col_md-4">
+						<span>
+							<strong>Note accueil:
+								{{ avis.noteAccueil }}/5
+							</strong>
+						</span>
+						<span>
+							<strong>Note compétences:
+								{{ avis.notePro }}/5
+							</strong>
+						</span>
+					</div>
+					<small class="font-italic">
+						Posté le
+						{{ avis.createdAt|date('d/M/Y') }}
+						à
+						{{ avis.createdAt|date('h:i:s') }}
 
-          {% endfor %}
-          
-          </div>
-        </div>
-        </div>
+						<div class="col_md-8">
+							{{ avis.contenu|striptags }}
+						</div>
 
-{% endblock %}
+					{% endfor %}
+
+				</div>
+			</div>
+		</div>
+		{# <h4 class="display-4 text-center my-5">
+					prendre un rendez vous...</h4>
+		
+				{{ form_start(formRdv,{'attr': {'class': 'col-md-4 mx-auto'}}) }}
+		
+				{{ form_row(formRdv.date) }}
+				{{ form_row(formRdv.horaires) }}
+				{{ form_row(formRdv.utilisateurs) }}
+				{{ form_row(formRdv.medecins) }}
+		
+				<button type="submit" class="btn btn-secondary">Confirmer cotre rendez vous</button>
+		
+				{{ form_end(formRdv)}} #}
+
+	{% endblock %}

@@ -73,13 +73,15 @@ class SecurityController extends AbstractController
     {
         $medecin = new Medecins;
 
-        $form = $this->createForm(MedecinInscriptionType::class, $medecin, [ 
-            'validation_groups' => ['inscription'] 
+        $form = $this->createForm(MedecinInscriptionType::class, $medecin, [
+            'validation_groups' => ['inscription']
         ]);
         $form->handleRequest($request);
         dump($request);
         dump($medecin);
-
+        if ($medecin) {
+            // return $this->redirectToRoute('compte_medecin');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -93,6 +95,8 @@ class SecurityController extends AbstractController
             $this->addFlash('success', "félicitations !! Votre compte a bien été validé ! vous pouvez dès à présent vous connecter");
             return $this->redirectToRoute('site');
         }
+
+
 
         return $this->render('security/medecininscription.html.twig', [
             'formMedecinInscription' => $form->createView()

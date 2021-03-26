@@ -1,38 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}ghfgh
+{% endblock %}
 
 {% block body %}
- <div class="container_1">
 
-  <main class="main">
+	<div class="container_1">
 
-        <h1 class="prendre_rdv_accueil">Réservez votre consultation chez un professionnel de santé </h1>
 
-     <div class="container_formulaire_accueil">
-
-      <form id="formulaire_accueil" action="">
-
-       <select class="select_formulaire_accueil" name="">
-           <option class="op_accueil" placeholder="Spécialité"  value="">Spécialité</option>
-           <option class="op_accueil"  value="">2</option>
-           <option class="op_accueil"  value="">3</option>
-       </select>
+		<main class="main">
 
        <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."><a href="{{ path('search') }}"> Filtrer </a> </input>
        <input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>  
 
-       <button class="valider_accueil">
-          <span class="valider2_accueil">Rechercher</span> 
-          <div class="loupe_accueil"></div>
-       </button>
 
-      </form>
+			<h1 class="prendre_rdv_accueil">Réservez votre consultation chez un professionnel de santé
+			</h1>
 
-    </div>
+			<div class="container_formulaire_accueil">
 
-  </main>
- </div>
+				<form id="formulaire_accueil" action="">
+
+					<select class="select_formulaire_accueil" name="">
+						<option class="op_accueil" placeholder="Spécialité" value="">Spécialité</option>
+						<option class="op_accueil" value="">2</option>
+						<option class="op_accueil" value="">3</option>
+					</select>
+
 
  <div class="container_2_accueil">
     <section class="section_1_accueil">
@@ -86,8 +80,11 @@
         <p class="marketing_txt">En tant que membre, vous pouvez recommander un spécialiste à la communauté, pour une maladie, un test diagnostique, un traitement médical ou chirurgical. <p>
        </section>
 
-    </section>
- </div>
+
+			<button class="valider_accueil">
+				<span class="valider2_accueil">Rechercher</span>
+				<div class="loupe_accueil"></div>
+			</button>
 
 
 
@@ -96,35 +93,44 @@
 <h1 class="display-4 text-center my-5"> {{ title }}</h1>
 
 
-      <div class="row">
+</main></div><div class="container_2_accueil">
+<section class="section_1_accueil"></section></div><h1 class="display-4 text-center my-5">
+{{ title }}</h1><div class="row">
 
-      {% for data in medecins %}
+{% for data in medecins %}
 
-      {# {{ dump(data)}} #}
-        
-     
+	{# {{ dump(data)}}  #}
 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-               {#<img src="{{ asset('uploads/images/' ~ data.image) }}" alt="{{data.title}} ">#}
 
-                <div class="card-body">
+	<div class="col-md-4">
+		<div
+			class="card mb-4 shadow-sm">
+			{#<img src="{{ asset('uploads/images/' ~ data.image) }}" alt="{{data.title}} ">#}
 
-                  <h4 class="text-center"> {{data.nom}} </h4> <hr>
+			<div class="card-body">
 
-                  <p class="card-text">{{ data.ville }}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group mr-2">
-                      <a href="{{ path('site_medecin', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
-            
-                    </div> 
-                  </div>
-                </div>
-              </div>
-            </div>
+				<h4 class="text-center">
+					{{data.nom}}
+				</h4>
+				<hr>
+				<h4 class="text-center">
+					{{data.ville}}
+				</h4>
+				<hr>
 
-      {% endfor %}
+				{# <p class="card-text">{{ data.ville }}</p> #}
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="btn-group mr-2">
+						<a href="{{ path('site_medecin', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
 
-      </div>
+					</div>
+					<div class="btn-group mr-2">
+						<a href="{{ path('prise_rdv', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">Prendre un RDV</a>
 
-{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}</div>{% endblock %}

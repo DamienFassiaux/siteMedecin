@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Rdv;
+use App\Entity\Medecins;
 use App\Entity\Utilisateurs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,11 +16,15 @@ class RdvFormType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('horaires')
-            ->add('utilisateurs',  EntityType::class, [
-                'class' => Utilisateurs::class,
-                'choice_label' => 'nom'
-            ]);
+            ->add('horaires');
+        // ->add('utilisateurs',  EntityType::class, [
+        //     'class' => Utilisateurs::class,
+        //     'choice_label' => 'nom'
+        // ])
+        // ->add('medecins', EntityType::class, [
+        //     'class' => Medecins::class,
+        //     'choice_label' => 'nom'
+        // ]);
         //->add('medecins');
     }
 

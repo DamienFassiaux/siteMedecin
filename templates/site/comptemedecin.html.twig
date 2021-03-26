@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block tiltes %}
+{% block tilte %}
 
 	compte medecin
 {% endblock %}
@@ -18,6 +18,52 @@
 	<div>ville :{{ville}}</div>
 	<div>code postale :{{codePostale}}</div>
 	<div>specialite :{{specialite.nom}}</div>
+	<table class="table table-bordered text-center">
+		<tr>
+			<th>
+				<strong>ID</strong>
+			</th>
+			<th>
+				<strong>NOM PATIENT</strong>
+			</th>
+			<th>
+				<strong>DATE DE RENDEZ VOUS</strong>
+			</th>
+			<th>
+				<strong>HORAIRES</strong>
+			</th>
+			<th></th>
+			<th></th>
+
+		</tr>
+		{% for rdv in mesRdv %}
+			<tr>
+				<td>
+					{{rdv.id}}
+				</td>
+				<td>
+					{{rdv.utilisateurs.nom}}
+				</td>
+				<td>
+					{{rdv.date|date("m/d/Y") }}
+
+				</td>
+				<td>
+					{{rdv.horaires|date("H:i")}}</td>
+
+				<td>
+					<a href="{{path('doc_edit_rdv', {'id': rdv.id})}}" class="btn btn-info">
+						<i class="fas fa-edit"></i>
+					</a>
+				</td>
+				<td>
+					<a href="{{path('doc_remove_rdv', {'id': rdv.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer ce rendez-vous ?'))">
+						<i class=" fas fa-trash-alt"></i>
+					</td>
+				</td>
+			</tr>
 
 
+		{% endfor %}
+	</table>
 {% endblock %}
