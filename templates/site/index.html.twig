@@ -19,7 +19,7 @@
            <option class="op_accueil"  value="">3</option>
        </select>
 
-       <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."></input>
+       <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."><a href="{{ path('search') }}"> Filtrer </a> </input>
        <input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>  
 
        <button class="valider_accueil">
@@ -42,6 +42,7 @@
        </section>
 
        <section class="fiche_medecin fm_child2">
+
 
         <div class="fiche_haut">
 
@@ -87,6 +88,9 @@
 
     </section>
  </div>
+
+
+
 
 
 <h1 class="display-4 text-center my-5"> {{ title }}</h1>
