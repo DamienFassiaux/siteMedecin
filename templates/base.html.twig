@@ -16,11 +16,10 @@
 			<link rel="preconnect" href="https://fonts.gstatic.com">
 			<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
 
-
+          {% if is_granted('ROLE_ADMIN') %} 
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
-
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+		  {% endif %} 
 
 			<link rel="stylesheet" href="{{ asset('/style.css') }}">
 		{% endblock %}
@@ -38,11 +37,6 @@
 		<header>
 			<nav class="nav">
 
-
-    {% endfor %}
-    <body>
-         <header>
-            <nav class="nav">
 
              <div class="nav_enfant nav_enfant_1"> <a href="{{ path('site') }}" id="logo"></a> </div>
 

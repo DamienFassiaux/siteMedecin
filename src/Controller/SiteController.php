@@ -21,10 +21,18 @@ class SiteController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(): Response
+    public function home(MedecinsRepository $repo): Response
     {
+
+        dump($repo); 
+
+        $medecins = $repo->findAll(); 
+
+        dump($medecins);
+
         return $this->render('site/index.html.twig', [
-            'controller_name' => 'Bienvenue',
+            'title' => 'Bienvenue',
+            'medecins' => $medecins 
         ]);
     }
 
