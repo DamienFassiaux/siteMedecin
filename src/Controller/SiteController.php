@@ -24,15 +24,19 @@ class SiteController extends AbstractController
     public function home(MedecinsRepository $repo): Response
     {
 
+
         dump($repo);
 
         $medecins = $repo->findAll();
 
+
         dump($medecins);
 
         return $this->render('site/index.html.twig', [
+
             'title' => 'Liste des médecins',
             'medecins' => $medecins
+
         ]);
     }
 
