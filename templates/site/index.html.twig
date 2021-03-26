@@ -1,4 +1,4 @@
-{# {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}{% endblock %}
 
@@ -19,7 +19,7 @@
            <option class="op_accueil"  value="">3</option>
        </select>
 
-       <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."></input>
+       <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."><a href="{{ path('search') }}"> Filtrer </a> </input>
        <input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>  
 
        <button class="valider_accueil">
@@ -40,13 +40,8 @@
     </section>
  </div>
 
-{% endblock %} #}
 
-{% extends 'base.html.twig' %}
 
-{% block title %}Liste des médecins{% endblock %}
-
-{% block body %}
 
 <h1 class="display-4 text-center my-5"> {{ title }}</h1>
 
