@@ -165,11 +165,9 @@ table {
     background-size: cover;
     background-repeat: no-repeat;
  
-
     width: 100%;
     margin: 0 auto;
     height: 600px;
-    background-color: rgba(88, 88, 88, 0.432);
     display: flex;   
     flex-direction: column;
     justify-content: center;
@@ -597,6 +595,7 @@ padding-left: 10px;
     grid-row-end: 5;
     border: none;
 }
+
 /******************************* MEDIA QUERIES ACCUEIL *************************************************************/
 @media screen and (max-width: 850px) { 
     .espace_marketing {
@@ -711,9 +710,65 @@ padding-left: 10px;
 }
 
 
+/************************************ESPACE MEDECIN***************************************************/
+.big_container_inscription_espacemed {
+    background-image: url("img/imgdoc3.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+ 
+    display: flex;
+    width: 100%;
+    min-height: 110vh;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+}
+.filter_blur_inscription_espacemed {
+    width: 100%;
+    min-height: 110vh;
+    background-color: rgba(0, 0, 0, 0.418);
+    position: absolute;
+    z-index: 2;
+}
+.container_inscription_espacemed {
+    z-index: 3;
 
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 85vh;
+    width: 30%;
+    min-width: 450px;
+    border-radius: 20px;
+    background-image: linear-gradient(to left bottom, #1aaaaa, #03b8af, #00c6b1, #1ad4b0, #36e1ad);
+}
 
+.logo_connexion_espacemed {
+    background-image: url("img/doctor.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: -0px -0px;
 
+    align-self: center;
+    background-color: #23c9c9;
+    height: 105px;
+    width: 105px;
+    border-radius: 55px;
+  }
+@media screen and (max-height: 780px) {
+
+    .container_inscription_espacemed {
+        height: 110vh;
+    }
+    .big_container_inscription_espacemed {
+        min-height: 140vh;
+    }
+    .filter_blur_inscription_espacemed {
+        min-height: 140vh;
+    }
+
+  }
 
 /****************************************CONNEXION***************************************************/
 
