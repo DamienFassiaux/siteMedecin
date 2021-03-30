@@ -2,36 +2,40 @@
 
 namespace App\Form;
 
-use App\Entity\Rdv;
 use App\Entity\Medecins;
-use App\Entity\Utilisateurs;
+use App\Entity\Specialite;
+use App\Entity\Departement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RdvFormType extends AbstractType
+
+class SearchFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('horaires');
-        // ->add('utilisateurs',  EntityType::class, [
-        //     'class' => Utilisateurs::class,
-        //     'choice_label' => 'nom'
-        // ])
-        // ->add('medecins', EntityType::class, [
+            ->add('specialite', EntityType::class, [
+                'class' => Specialite::class,
+                'choice_label' => 'nom'
+            ])
+
+
+            ->add('departement', EntityType::class, [
+                'class' => Departement::class,
+                'choice_label' => 'nom'
+            ]);
+        // ->add('medecin', EntityType::class, [
         //     'class' => Medecins::class,
         //     'choice_label' => 'nom'
         // ]);
-        //->add('medecins');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Rdv::class,
+            // Configure your form options here
         ]);
     }
 }

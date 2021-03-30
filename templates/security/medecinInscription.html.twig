@@ -20,37 +20,37 @@
 	</h1>
 
 
-	{{ form_start(formMedecinInscription, {'attr': {'class': 'col-md-4 mx-auto'} }) }}
 
-	{{ form_row(formMedecinInscription.nom,{'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_start(formMedecinInscription, {'attr': {'class': 'col-md-4 mx-auto'} }) }}
 
-	{{ form_row(formMedecinInscription.prenom, {'attr': {'class': "email_inscription_input"} }) }}
-	{{ form_row(formMedecinInscription.centre_medical, {'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.nom,{'attr': {'class': "email_inscription_input"} } ) }}
 
-	{{ form_row(formMedecinInscription.telephone, {'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_row(formMedecinInscription.prenom, {'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.centre_medical, {'attr': {'class': "email_inscription_input"} }) }}
 
-	{{ form_row(formMedecinInscription.adresse, {'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_row(formMedecinInscription.telephone, {'attr': {'class': "email_inscription_input"} } ) }}
 
-	{{ form_row(formMedecinInscription.code_postal, {'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_row(formMedecinInscription.adresse, {'attr': {'class': "email_inscription_input"} } ) }}
 
-	{{ form_row(formMedecinInscription.ville,{'attr': {'class': "email_inscription_input"} }) }}
-	{{ form_row(formMedecinInscription.horaires, {'attr': {'class': "email_inscription_input"} }) }}
-	{{ form_row(formMedecinInscription.specialite,{'attr': {'class': "email_inscription_input"} }) }}
-	{{ form_row(formMedecinInscription.departement, {'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.code_postal, {'attr': {'class': "email_inscription_input"} } ) }}
 
-	{{ form_row(formMedecinInscription.email,{'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_row(formMedecinInscription.ville,{'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.horaires, {'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.specialite,{'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.departement, {'attr': {'class': "email_inscription_input"} }) }}
 
-	{{ form_row(formMedecinInscription.password,{'attr': {'class': "email_inscription_input"} }) }}
+				{{ form_row(formMedecinInscription.email,{'attr': {'class': "email_inscription_input"} } ) }}
 
-	{{ form_row(formMedecinInscription.confirm_password, {'attr': {'class': "email_inscription_input"} } ) }}
+				{{ form_row(formMedecinInscription.password,{'attr': {'class': "email_inscription_input"} }) }}
 
-	{{ form_end(formMedecinInscription) }}
+				{{ form_row(formMedecinInscription.confirm_password, {'attr': {'class': "email_inscription_input"} } ) }}
+				<button type="submit" class="btn btn-secondary bcontinuer">S'inscrire</button>
+				{{ form_end(formMedecinInscription) }}
 
-	<button type="submit" class="btn btn-secondary bcontinuer">S'inscrire</button>
 
-   </div>
+			</div>
 
-  </div>  
+		</div>
 
- </div>
+	</div>
 {% endblock %}

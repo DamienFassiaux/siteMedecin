@@ -22,19 +22,20 @@ class MedecinsRepository extends ServiceEntityRepository
     // /**
     //  * @return Medecins[] Returns an array of Medecins objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+
+    // public function findByMedecin($filtre)
+    // {
+    //     return $this->createQueryBuilder('m')
+    //         ->andWhere('m.departement = :departement')
+    //         ->setParameter('departement', $filtre['departement']->getId())
+    //         ->andWhere('m.specialite = :specialite')
+    //         ->setParameter('specialite', $filtre['specialite']->getId())
+    //         //->orderBy('m.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
 
     /*
     public function findOneBySomeField($value): ?Medecins

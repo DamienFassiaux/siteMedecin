@@ -1,0 +1,27 @@
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+{# {% extends 'base.html.twig' %} #}
+
+{% block body %}
+
+	<h1>
+		Recherche avancée
+	</h1>
+
+	<div class="container_formulaire_accueil">
+		{{ form_start(formSearch, {'attr': {'id': 'formulaire_accueil'}}) }}
+
+		{{ form_row(formSearch.specialite, {'attr': {'class': 'select_formulaire_accueil'}}) }}
+
+		{{ form_row(formSearch.departement, {'attr': {'class': 'input_formulaire_accueil'}}) }}
+
+		<button type="submit" class="valider_accueil">
+			<span class="valider2_accueil">Rechercher</span>
+			<div class="loupe_accueil"></div>
+		</button>
+
+
+		{{ form_end(formSearch) }}
+	</div>
+
+
+{% endblock %}
