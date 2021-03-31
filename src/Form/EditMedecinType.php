@@ -7,12 +7,12 @@ use App\Entity\Specialite;
 use App\Entity\Departement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EditMedecinType extends AbstractType
 {
@@ -38,10 +38,25 @@ class EditMedecinType extends AbstractType
             ->add('Specialite',  EntityType::class, [
                     'class' => Specialite::class,
                     'choice_label' => 'nom' ])
-             ->add('Departement', EntityType::class, [
+            ->add('Departement', EntityType::class, [
                     'class' => Departement::class,
                     'choice_label' => 'nom' ])
-                    ;
+            ->add('image', FileType::class, [
+                        'label' =>"Photo du médecin", 
+                        'mapped' => true, 
+                        'required' => false ,
+                        'constraints' => [
+                            new File([
+                                'maxSize' => '2M',
+                                'mimeTypes' => [
+                                    'image/jpeg',
+                                    'image/png',
+                                    'image/jpg'
+                                ],
+                                'mimeTypesMessage'=> ['Extensions acceptées : jpg/jpeg/png ']
+                           ])
+                        
+            ]]);
         
     }
 
@@ -49,7 +64,7 @@ class EditMedecinType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Medecins::class,
-            'validation_groups' => ['inscription'] 
+            //'validation_groups' => ['inscription'] 
         ]);
     }
 }
