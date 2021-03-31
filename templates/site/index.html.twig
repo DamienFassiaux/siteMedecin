@@ -6,28 +6,30 @@
 {% block body %}
 
 	<div class="container_1">
-
+       
 
 		<main
 			class="main">
 
-			<h1 class="prendre_rdv_accueil">Réservez votre consultation chez un professionnel de santé
+
+			{# <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville...">
+												<a href="{{ path('search') }}">
+													Filtrer
+												</a>
+											</input>
+											<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input> #}
+
+
+			<h1 id="prendre_rdv_accueil_id" class="prendre_rdv_accueil">
 			</h1>
-			{#<div>
-				{{render(controller('App\\Controller\\SearchController::search'))}}
-			</div>#}
-			 <div class="container_formulaire_accueil">
+
+			<div class="container_formulaire_accueil">
+
 			
 			
 						<form id="formulaire_accueil" action="">
-			
-							<select class="select_formulaire_accueil" name="">
-								<option class="op_accueil" placeholder="Spécialité" value="">Spécialité</option>
-								<option class="op_accueil" value="">2</option>
-								<option class="op_accueil" value="">3</option>
-							</select>
-							<input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."></input>
-						<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>
+	
+						<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Rechercher un médecin..."></input>
 			
 					<button class="valider_accueil">
 						<span class="valider2_accueil"><a href="{{ path('search') }}">Rechercher</a></span>
@@ -47,7 +49,7 @@
 					</h2>
 				</section>
 
-				<section class="fiche_medecin fm_child2">
+				<section id="fmfmc2" class="fiche_medecin fm_child2">
 
 
 					<div class="fiche_haut">
@@ -77,12 +79,16 @@
 						<button class="bouton_rdv_accueil">Prendre un rendez-vous</button>
 						<button class="bouton_ensavoirplus">En savoir plus</button>
 						<article class="avis_fichemed">
-							Avis :
+							Note :
 						</article>
 					</div>
 
 				</section>
 
+
+				<section id="fmfmc3" class="fiche_medecin fm_child3"></section>
+
+				<section class="fiche_medecin fm_child4"></section>
 
 				<section class="espace_marketing fm_child5">
 					<div class="photomedecin_marketing"></div>
@@ -142,4 +148,5 @@
 
 			{% endfor %}
 		</div>
+
 	{% endblock %}

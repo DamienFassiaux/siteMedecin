@@ -60,6 +60,15 @@ table {
     -ms-overflow-style: none; 
     overflow: -moz-scrollbars-none; 
     }
+    .flex {
+        color: #03b8af;
+    }
+    #fmfmc2 {
+        display: none;
+    }
+    #fmfmc3 {
+        display: none;
+    }
 .nav {
  
     width: 100%;
@@ -212,7 +221,8 @@ img {
 .prendre_rdv_accueil {
     letter-spacing: 1.5px;
     font-weight: bolder;
-    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.493);
+    border-radius: 10px;
     font-size: 30px;
     position: absolute;
 
@@ -254,9 +264,10 @@ img {
     width: 20px;
 }
 .input_formulaire_accueil {
+    padding-left: 10px;
     font-size: 15px;
     border: none;
-    width: 30%;
+    width: 50%;
     min-height: 50px;
     align-self: center;
      background-color: rgba(30, 74, 131, 0);
@@ -265,7 +276,8 @@ img {
     border: none;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    min-width: 23%;
+    min-width: 30%;
+    width: 50%;
     min-height: 50px;
     background-color: rgb(12, 12, 12);
     cursor: pointer;
@@ -494,6 +506,9 @@ footer {
           font-weight: bolder;
     }
 .photo_fichemed {
+    background-image: url("img/photomedecincarte1.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 margin-top: 10px;
 margin-left: 10px;
 background-color: rgb(238, 238, 238);
@@ -614,34 +629,10 @@ padding-left: 10px;
 
 }
 
-@media screen and (max-width: 650px) {
-     #formulaire_accueil {
-         flex-direction: column;
-     }
-     #formulaire_accueil {
-         height: 190px;
-     }
-     #container_formulaire_accueil {
-        height: 190px;
+@media screen and (max-width: 550px) {
+    .prendre_rdv_accueil {
+         display: none;
     }
-     .input_formulaire_accueil {
-           width: 100%;
-           height: 20%;
-     }
-     .select_formulaire_accueil {
-        height: 20%;
-        width: 100%;
-     }
-     .valider_accueil {
-         border-bottom-left-radius: 50px;
-         border-top-right-radius: 0px;
-         height: 20%;
-     }
-
-     .prendre_rdv_accueil {
-          display: none;
-     }
-
   }
 
 
