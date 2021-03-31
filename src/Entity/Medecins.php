@@ -8,7 +8,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=MedecinsRepository::class)
@@ -46,7 +48,7 @@ class Medecins implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message= "Veuillez renseigner votre numéro!")
      * @Assert\Length(min=10, max=10 ,exactMessage= "Numéro incorrect")
      */
@@ -134,6 +136,11 @@ class Medecins implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Image;
+
     public function __construct()
     {
         $this->avis = new ArrayCollection();
@@ -169,12 +176,12 @@ class Medecins implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
@@ -374,5 +381,17 @@ class Medecins implements UserInterface
 
     public function getUsername()
     {
+    }
+
+    public function getImage()//: ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage( $Image)//: self
+    {
+        $this->Image = $Image;
+
+        return $this;
     }
 }

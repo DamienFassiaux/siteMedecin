@@ -11,6 +11,7 @@
 		<main
 			class="main">
 
+
 			{# <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville...">
 												<a href="{{ path('search') }}">
 													Filtrer
@@ -23,6 +24,7 @@
 			</h1>
 
 			<div class="container_formulaire_accueil">
+
 			
 			
 						<form id="formulaire_accueil" action="">
@@ -30,7 +32,7 @@
 						<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Rechercher un médecin..."></input>
 			
 					<button class="valider_accueil">
-						<span class="valider2_accueil">Rechercher</span>
+						<span class="valider2_accueil"><a href="{{ path('search') }}">Rechercher</a></span>
 						<div class="loupe_accueil"></div>
 					</button>
 				</form>
@@ -83,6 +85,7 @@
 
 				</section>
 
+
 				<section id="fmfmc3" class="fiche_medecin fm_child3"></section>
 
 				<section class="fiche_medecin fm_child4"></section>
@@ -102,42 +105,40 @@
 
 			</main>
 		</div>
-		<div class="container_2_accueil">
-			<section class="section_1_accueil"></section>
-		</div>
+		
 		<h1 class="display-4 text-center my-5">
 			{{ title }}</h1>
 		<div class="row">
 
-			{% for data in medecins %}
-
-				{# {{ dump(data)}}  #}
-
+			{% for medecin in medecins %}
 
 				<div class="col-md-4">
 					<div
 						class="card mb-4 shadow-sm">
-						{#<img src="{{ asset('uploads/images/' ~ data.image) }}" alt="{{data.title}} ">#}
-
+						
 						<div class="card-body">
 
 							<h4 class="text-center">
-								{{data.nom}}
+								{{medecin.nom}}
 							</h4>
 							<hr>
-							<h4 class="text-center">
-								{{data.ville}}
-							</h4>
+							<p class="text-center">
+								{{medecin.ville}}
+							</p>
+							<img src="{{ asset('uploads/images/' ~ medecin.image) }}" alt="{{medecin.nom}}" class="img-medecins">
 							<hr>
-
+							<div> /5 </div>
+							<div> /5 </div>
+							<div> Note globale: </div>
+                        
 							{# <p class="card-text">{{ data.ville }}</p> #}
 							<div class="d-flex justify-content-between align-items-center">
 								<div class="btn-group mr-2">
-									<a href="{{ path('site_medecin', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
+									<a href="{{ path('site_medecin', {'id': medecin.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
 
 								</div>
 								<div class="btn-group mr-2">
-									<a href="{{ path('prise_rdv', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">Prendre un RDV</a>
+									<a href="{{ path('prise_rdv', {'id': medecin.id}) }}" class="btn btn-sm btn-outline-secondary">Prendre un RDV</a>
 
 								</div>
 							</div>

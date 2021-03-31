@@ -13,6 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
 
@@ -36,6 +40,7 @@ class SecurityController extends AbstractController
             $hash = $encoder->encodePassword($utilisateur, $utilisateur->getPassword());
 
             $utilisateur->setPassword($hash);
+            $utilisateur->setRoles(["ROLE_USER"]);
 
             $manager->persist($utilisateur);
             $manager->flush();
@@ -53,7 +58,7 @@ class SecurityController extends AbstractController
     /**
      *@Route("/medecin/inscription", name="medecin_inscription")
      */
-    public function formMedecinInscription(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder): Response
+    public function formMedecinInscription(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder, SluggerInterface $slugger): Response
     {
         $medecin = new Medecins;
 
@@ -66,6 +71,38 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             //dd($request);
+
+            /** @var UploadedFile $imageFile */
+            $imageFile = $form->get('image')->getData();
+            dump($imageFile);
+
+              if($imageFile)
+              {
+                  $originalFilename = pathinfo($imageFile->getClientOriginalname(), PATHINFO_FILENAME);
+                  dump($originalFilename);
+
+                  $safeFilename = $slugger->slug($originalFilename);
+                dump($safeFilename);
+
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try
+                {
+                    $imageFile->move(
+                        $this->getParameter('image_directory'),
+                        $newFilename
+                    );
+                }
+                catch(FileException $e)
+                {
+
+                }
+
+                $medecin->setImage($newFilename);
+              }
+
+              
+
             $hash = $encoder->encodePassword($medecin, $medecin->getPassword());
 
             $medecin->setPassword($hash);
@@ -97,10 +134,7 @@ class SecurityController extends AbstractController
 
         $lastUsername = $authenticationUtils->getLastUsername();
 
-
-
-        //return $this->redirectToRoute('site');
-        $this->addFlash('success', "félicitations !! Bienvenue dans votre espace personnel");
+        //$this->addFlash('success', "félicitations !! Bienvenue dans votre espace personnel");
 
         return $this->render('security/login.html.twig', [
             'error' => $error,

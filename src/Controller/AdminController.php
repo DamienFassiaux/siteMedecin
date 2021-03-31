@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\EditMedecinType;
 use App\Form\DepartementType;
 use App\Form\SpecialiteType;
-use App\Form\UtilisateurType;
 use App\Repository\DepartementRepository;
 use App\Entity\Specialite;
 use App\Repository\SpecialiteRepository;
@@ -21,9 +20,12 @@ use App\Repository\AvisRepository;
 use App\Entity\Avis;
 use App\Repository\UtilisateursRepository;
 use App\Entity\Utilisateurs;
-use App\Form\InscriptionType;
 use App\Form\EditUserType;
 use App\Form\AvisType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 class AdminController extends AbstractController
 {
@@ -79,11 +81,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/{id}/edit-medecin", name="admin_edit_medecin")
      */
-    public function adminEditMedecin(Medecins $medecin, Request $request, EntityManagerInterface $manager): Response
+    public function adminEditMedecin(Medecins $medecin, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
-        dump($medecin);
-
-
+        $medecin->setImage(
+            new File($this->getParameter('image_directory').'/' .$medecin->getImage())
+        );
+     
         $formMedecin = $this->createForm(EditMedecinType::class, $medecin);
 
         dump($request);
@@ -92,10 +95,41 @@ class AdminController extends AbstractController
 
         if($formMedecin->isSubmitted() && $formMedecin->isValid())
         {   
+               dump($medecin);
+
+             /** @var UploadedFile $imageFile */
+             $imageFile = $formMedecin->get('image')->getData();
+             dump($imageFile);
+
+             if($imageFile)
+             {
+                 $originalFilename = pathinfo($imageFile->getClientOriginalname(), PATHINFO_FILENAME);
+                 dump($originalFilename);
+
+                 $safeFilename = $slugger->slug($originalFilename);
+               dump($safeFilename);
+
+               $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+               try
+               {
+                   $imageFile->move(
+                       $this->getParameter('image_directory'),
+                       $newFilename
+                   );
+               }
+               catch(FileException $e)
+               {
+
+               }
+
+               $medecin->setImage($newFilename);
+             }
+
             if(!$medecin->getId())
                 {
                 $medecin->setNom;
-                }
+                } 
             $manager->persist($medecin);
             $manager->flush();
 
@@ -196,7 +230,7 @@ class AdminController extends AbstractController
 
         return $this->render('admin/admin_edit_departement.html.twig', [
             'formDepartement'=> $formDepartement->createView(),
-            'idDepartement' => $departement->getId() !== null
+            'Departement' => $departement->getNumero()
 
         ]);
     } 
@@ -286,7 +320,7 @@ class AdminController extends AbstractController
 
         return $this->render('admin/admin_edit_specialite.html.twig', [
             'formSpecialite'=> $formSpecialite->createView(),
-            'idSpecialite' => $specialite->getId() !== null
+            'Specialite' => $specialite->getNom()
         ]);
     } 
 
@@ -380,7 +414,7 @@ class AdminController extends AbstractController
 
         $utilisateurs = $repoUtilisateur->findAll();
 
-        dump($utilisateurs);
+        dump($utilisateur);
 
         if($utilisateur)
         {
@@ -419,7 +453,7 @@ class AdminController extends AbstractController
         {
 
             $id = $utilisateur->getId();
-            $username = $utilisateur->getUsername();
+            $username = $utilisateur->getNom();
 
             $manager->persist($utilisateur);
             $manager->flush();

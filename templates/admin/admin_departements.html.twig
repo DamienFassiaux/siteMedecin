@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "home.html.twig" %}
 
 {% block title %}
     BACKOFFICE | Gestion des départements
@@ -10,15 +10,16 @@
     <h1 class="display-4 text-center my-5">BACKOFFICE | Gestion des départements</h1>
     <div class="text-center my-5"> <button class="btn btn-secondary mb-5"><a href="{{ path('admin_new_departement') }}"</a>Créer un département</button></div>
 
-    {% for message in app.flashes('success') %}
+
+
+    <table class="table table-bordered table-hover text-center">
+
+     {% for message in app.flashes('success') %}
 
         <div class="col-md-3 bg-success p-4 rounded mx-auto text-center text-white mb-3">
          {{ message }}
         </div>
-
-    {% endfor %}
-
-    <table class="table table-bordered text-center">
+      {% endfor %}
 
         <tr>
             

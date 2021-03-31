@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'home.html.twig' %}
 
 {% block title %}
 	Affichage des resultats de recherche
@@ -17,7 +17,7 @@
 			<div class="col-md-4">
 				<div
 					class="card mb-4 shadow-sm">
-					{# <img src="{{ asset('uploads/images/' ~ data.image) }}" alt="{{data.title}} "> #}
+					 <img src="{{ asset('uploads/images/' ~ data.image) }}" alt="{{data.nom}} "> 
 
 					<div class="card-body">
 
@@ -31,6 +31,10 @@
 								<a href="{{ path('site_medecin', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
 
 							</div>
+							<div class="btn-group mr-2">
+									<a href="{{ path('prise_rdv', {'id': data.id}) }}" class="btn btn-sm btn-outline-secondary">Prendre un RDV</a>
+
+								</div>
 						</div>
 					</div>
 				</div>

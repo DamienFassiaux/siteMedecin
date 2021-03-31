@@ -23,7 +23,7 @@ class InscriptionType extends AbstractType
             ->add('prenom', TextType::class, [
                 'required' => false
             ])
-            ->add('telephone', IntegerType::class, [
+            ->add('telephone', TextType::class, [
                 'required' => false
             ])
             ->add('adresse', TextType::class, [

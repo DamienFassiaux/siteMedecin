@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "home.html.twig" %}
 
 {% block title %}
     BACKOFFICE | Gestion Spécialités
@@ -6,9 +6,9 @@
 
 {% block body %}
      
-       {% if idSpecialite %}
+       {% if Specialite %}
 
-       <h1 class="display-4 text-center my-5">Modification spécialité n° <span class="text-info">{{ idSpecialite }}</span></h1>
+       <h1 class="display-4 text-center my-5">Modification <span class="text-info">{{ Specialite }}</span></h1>
 
       {% else %}
 
