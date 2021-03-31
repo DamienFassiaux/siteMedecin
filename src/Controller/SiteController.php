@@ -79,7 +79,7 @@ class SiteController extends AbstractController
             $manager->persist($rdv);
             $manager->flush();
 
-            $this->addFlash('success', "Votre  rendez vous a bien été prsie en compte!");
+            $this->addFlash('success', "Votre rendez vous a bien été pris en compte!");
         }
         return $this->render('site/priserdv.html.twig', [
             'formRdv' => $formRdv->createView(),
@@ -176,6 +176,7 @@ class SiteController extends AbstractController
 
         $user = $this->getUser();
 
+        
 
         dump($user);
         dump($medecin);
@@ -202,7 +203,7 @@ class SiteController extends AbstractController
         //     $manager->persist($rdv);
         //     $manager->flush();
 
-        //     $this->addFlash('success', "Le RDV  a bien été prsie en compte!");
+        //     $this->addFlash('success', "Le RDV  a bien été pris en compte!");
         // }
         return $this->render('site/cardMedecin.html.twig', [
             'medecin' => $medecin,

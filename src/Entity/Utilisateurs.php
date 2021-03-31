@@ -45,7 +45,7 @@ class Utilisateurs implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message= "Veuillez renseigner votre numéro!")
      * @Assert\Length(min=10, max=10 ,exactMessage= "Numéro incorrect")
      */
@@ -143,12 +143,12 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 

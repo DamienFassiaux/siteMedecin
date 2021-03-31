@@ -25,12 +25,13 @@
 
 			<div
 				class="card mb-4 shadow-sm">
-				{# <img src="{{ asset('uploads/images/' ~ article.image) }}" alt="{{article.title}} class="img-user-articles"> #}
 
 				<h4 class="text-center">Docteur
 					{{medecin.nom}}
 				</h4>
 				<div class="card-body">
+
+				    <img src="{{ asset('uploads/images/' ~ medecin.image) }}" alt="{{medecin.nom}}" class="img-user-medecins">
 
 					<p class="card-text">
 						{{medecin.specialite.nom}}
@@ -82,6 +83,11 @@
 						<span>
 							<strong>Note compétences:
 								{{ avis.notePro }}/5
+							</strong>
+						</span>
+							<span>
+							<strong>Note globale:
+								{{ (avis.noteAccueil + avis.notePro)/2 }}/5
 							</strong>
 						</span>
 					</div>

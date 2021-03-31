@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "home.html.twig" %}
 
 {% block title %}
     BACKOFFICE | Gestion des médecins
@@ -18,7 +18,7 @@
 
     {% endfor %}
 
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered table-sm table-hover text-center adminMedecin">
 
         <tr>
     
@@ -35,9 +35,9 @@
             
             {% endfor %}
 
-                  <th>SPECIALITE</th>
-                  <th>DEPARTEMENT</th>
-                  <th> NB AVIS</th>
+                  <th>SPEC</th>
+                  <th>DPT</th>
+                  <th>NB AVIS</th>
 
         </tr>
             
@@ -55,11 +55,12 @@
                   <td>{{ oneMedecin.email }}</td>
                   <td>{{ oneMedecin.horaires }}</td>
                   <td>{{ oneMedecin.roles[0] }}</td>
+                  <td><img src="{{ oneMedecin.image }}" alt="{{ oneMedecin.nom }}"></td>
                   <td>{{ oneMedecin.specialite.nom }}</td>
                   <td>{{ oneMedecin.departement.numero }}</td>
                   <td>{{ oneMedecin.avis|length }}</td>
                   
-                  {#<td><img src="{{ oneMedecin.image }}" alt="{{ oneMedecin.nom }}" class="img-admin-medecins"></td>#}
+                  
 
                   
 
