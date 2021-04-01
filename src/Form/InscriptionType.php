@@ -50,7 +50,7 @@ class InscriptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateurs::class,
-            // 'validation_groups' => ['inscription'] 
+             'validation_groups' => ['inscription'] 
         ]);
     }
 }

@@ -13,27 +13,27 @@
      
      {{ form_start(formEditMedecin ,{'attr': {'class': 'col-md-5 mx-auto'} }) }}
         
-        {{ form_row(formEditMedecin.nom) }}
+        {{ form_row(formEditMedecin.nom, {'label': "Nom"}) }}
 
-        {{ form_row(formEditMedecin.prenom) }} 
+        {{ form_row(formEditMedecin.prenom, {'label': "Prénom"}) }} 
 
-        {{ form_row(formEditMedecin.telephone) }} 
+        {{ form_row(formEditMedecin.telephone, {'label': "Numéro du cabinet"}) }} 
 
-        {{ form_row(formEditMedecin.centre_medical) }}
+        {{ form_row(formEditMedecin.centre_medical, {'label': "Centre médical"}) }}
 
-        {{ form_row(formEditMedecin.adresse) }}
+        {{ form_row(formEditMedecin.adresse, {'label': "Adresse"}) }}
 
-        {{ form_row(formEditMedecin.code_postal) }}
+        {{ form_row(formEditMedecin.code_postal, {'label': "Code postal"}) }}
 
-        {{ form_row(formEditMedecin.ville) }}
+        {{ form_row(formEditMedecin.ville, {'label': "Ville"}) }}
 
-        {{ form_row(formEditMedecin.horaires) }}
+        {{ form_row(formEditMedecin.horaires, {'label': "Horaires d'ouverture"}) }}
 
         {{ form_row(formEditMedecin.image) }} 
 
-        {{ form_row(formEditMedecin.Specialite) }}
+        {{ form_row(formEditMedecin.Specialite, {'label': "Spécialité"}) }}
 
-        {{ form_row(formEditMedecin.Departement) }} 
+        {{ form_row(formEditMedecin.Departement, {'label': "Département"}) }} 
 
 
         <button type="submit" class="btn btn-secondary mb-5">Modifier le médecin </button>
