@@ -48,7 +48,10 @@ table {
 }
 /************************************************************/
 /****************************************HEADER FOOTER PAGE D'ACCUEIL***************************************************/
-
+body {
+    margin: 0px;
+    padding: 0px;
+}
 :root {
     font-family: 'Roboto Mono', monospace;
     --couleurune: #23c9c9;
@@ -457,7 +460,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border: 2px solid black;
+    
     min-width: 400px;
     border-radius: 10px;
     }
@@ -574,6 +577,7 @@ background-color: rgb(255, 255, 255);
 text-align: start;
 line-height: 40px;
 padding-left: 10px;
+border: 3px solid black;
 }
 .espace_marketing {
     display: flex;
@@ -647,7 +651,7 @@ padding-left: 10px;
  
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    min-height: 110vh;
     background-color: rgb(255, 255, 255);
     justify-content: center;
 }
@@ -655,7 +659,7 @@ padding-left: 10px;
 .filter_blur_inscription {
 
     width: 100%;
-    min-height: 100vh;
+    min-height: 110vh;
     background-color: rgba(0, 0, 0, 0.418);
     position: absolute;
 
@@ -667,7 +671,7 @@ padding-left: 10px;
     align-self: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    height: 85vh;
+    height: 95vh;
     width: 30%;
     min-width: 450px;
     border-radius: 20px;
@@ -738,7 +742,7 @@ padding-left: 10px;
     align-self: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    height: 85vh;
+    height: 95vh;
     width: 30%;
     min-width: 450px;
     border-radius: 20px;
@@ -760,7 +764,7 @@ padding-left: 10px;
 @media screen and (max-height: 780px) {
 
     .container_inscription_espacemed {
-        height: 110vh;
+        height: 120vh;
     }
     .big_container_inscription_espacemed {
         min-height: 140vh;
@@ -903,3 +907,5 @@ padding-left: 10px;
     opacity: 0.8;
   
   }
+
+
