@@ -322,7 +322,7 @@ img {
 
 .container_2_accueil {
     width: 100%;
-    height: 700px;
+    height: 800px;
     background-color: white;
 }
 
@@ -357,6 +357,7 @@ footer {
 .pds_txt {
     line-height: 23px;
    height: 70px;
+   align-self: center;
 
 }
 .pds_txta {
@@ -434,7 +435,7 @@ footer {
 /***************************************** FICHE MEDECIN ****************************************************/
 .h2_note_med {
     align-self: center;
-    line-height: 70px;
+    line-height: 50px;
     font-weight: bolder;
     color: var(--couleurune);
     font-size: 25px;
@@ -462,11 +463,12 @@ footer {
     justify-content: space-between;
     flex-direction: column;
     
-    min-width: 400px;
+    min-width: 490px;
     border-radius: 10px;
     }
     .fm_child1 {
         border: none;
+        min-width: 500px;
          grid-column-start: 1;
          grid-column-end: 3;
          grid-row-start: 1;
@@ -563,10 +565,7 @@ border-radius: 15px;
 margin-left: 50px;
 align-self: center;
 }
-a {
-    text-decoration: none;
-    color: black;
-}
+
 .bouton_rdv_accueil:hover {
     transition: 0.2s ease;
     color: var(--couleurune);
@@ -603,7 +602,7 @@ font-size: 14px;
 background-color: rgb(255, 255, 255);
 text-align: start;
 line-height: 40px;
-padding-left: 10px;
+padding-left: 50px;
 border: 3px solid black;
 }
 .espace_marketing {
@@ -650,12 +649,26 @@ border: 3px solid black;
     grid-row-end: 5;
     border: none;
 }
+a {
+    text-decoration: none;
+}
 
 
 /******************************* MEDIA QUERIES ACCUEIL *************************************************************/
-@media screen and (max-width: 850px) { 
+@media screen and (max-width: 1020px) { 
     .espace_marketing {
         display: none;
+    }
+    .section_1_accueil {
+        width: 95%;
+        margin: 0 auto;
+        height: 700px;
+        background-color: rgb(255, 255, 255);
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 1.25fr 1.25fr 1.25fr;
+        grid-auto-flow: row;
+        gap: 3%;
     }
 
 }
