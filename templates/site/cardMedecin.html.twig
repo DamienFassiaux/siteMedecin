@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'home.html.twig' %}
 
 
 {% block title %}Détail du médecin
@@ -24,7 +24,7 @@
 		<div class="col-md-8 mx-auto">
 
 			<div
-				class="card mb-4 shadow-sm">
+				class="col-md-6 card mb-4 shadow-sm mx-auto">
 
 				<h4 class="text-center">Docteur
 					{{medecin.nom}}
@@ -33,8 +33,8 @@
 
 				    <img src="{{ asset('uploads/images/' ~ medecin.image) }}" alt="{{medecin.nom}}" class="img-user-medecins">
 
-					<p class="card-text">
-						{{medecin.specialite.nom}}
+					<p class="card-text text-center">
+						{{medecin.specialite.nom|upper }} à {{medecin.ville|capitalize }}
 					</p>
 
 				</div>
@@ -64,45 +64,21 @@
 				Derniers avis...
 			</h4>
 			<div class="card mb-4 row ">
-		
-
-
+	                    {% for avis in medecin.avis %}
 					<div class="col_md-4">
-						<span>
-							<strong>
-					sdfsdf
-							</strong>
-						</span>
-					</div>
+						<span><strong> {{ avis.auteur|title }}</strong></span>
+					 </div>
+					<small class="font-italic"> Posté le {{ avis.createdAt|date('d/M/Y') }} à {{ avis.createdAt|date('h:i:s') }}</small>
+					<div class="col_md-8"> {{ avis.contenu }} </div>
 					<div class="col_md-4">
-						<span>
-							<strong>Note accueil:
-							sdfsdf
-							</strong>
-						</span>
-						<span>
-							<strong>Note compétences:
-							dsfsdf
-							</strong>
-						</span>
-							<span>
-							<strong>Note globale:
-								{{ (avis.noteAccueil + avis.notePro)/2 }}/5
-							</strong>
-						</span>
+						<span><strong>Note accueil:{{ avis.noteAccueil}}/5</strong></span>
+
+						<span><strong>Note compétences:{{ avis.notePro}}/5</strong></span>
+
+						<span><strong>Note globale:{{ (avis.noteAccueil + avis.notePro)/2 }}/5</strong></span>
 					</div>
-					<small class="font-italic">
-						Posté le
-			fdddddddddddddg
-						à
-						ddddddddddddddddddddd
-
-						<div class="col_md-8">
-					dffffffffffffffffffffg
-						</div>
-
-		
-
+                     <hr>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

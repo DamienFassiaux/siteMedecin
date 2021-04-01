@@ -29,7 +29,8 @@ tr
 }
 body {
 	line-height: 1;
-    
+   margin: 0;   
+   padding: 0;
 }
 ol, ul {
 	list-style: none;
@@ -414,9 +415,9 @@ footer {
      min-width: 30px;
      height: 30px;
 }
-.img-medecins{
-    width: 200px !important;
-    height: 200px !important;
+.img-user-medecins{
+    width: 300px !important;
+    height: 300px !important;
 }
 #email,#facebook,#twitter:hover {
     cursor: pointer;
@@ -489,7 +490,7 @@ footer {
         grid-column-end: 3;
         grid-row-start: 4;
         background-image: linear-gradient(to left bottom, #1aaaaa, #03b8af, #00c6b1, #1ad4b0, #36e1ad);;
-    }
+    } 
     .fiche_haut {
      display: flex;
      height: 70%;
@@ -508,8 +509,30 @@ footer {
           color: white;
           font-weight: bolder;
     }
-.photo_fichemed {
-    background-image: url("img/photomedecincarte1.png");
+.photo_fichemed2 {
+    background-image: url("uploads/images/HG-Media-Contact-M-Goegele-200x200-606331e271321.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+margin-top: 10px;
+margin-left: 10px;
+background-color: rgb(238, 238, 238);
+height: 95px;
+width: 95px;
+border-radius: 55px;
+}
+.photo_fichemed3 {
+    background-image: url("uploads/images/David-Fournier-Preview-200x200px-60633234174dd.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+margin-top: 10px;
+margin-left: 10px;
+background-color: rgb(238, 238, 238);
+height: 95px;
+width: 95px;
+border-radius: 55px;
+}
+.photo_fichemed4 {
+    background-image: url("uploads/images/200x200px-yannick-gervais-17122020-6063326f80b64.png");
     background-size: 100%;
     background-repeat: no-repeat;
 margin-top: 10px;
@@ -539,6 +562,10 @@ cursor: pointer;
 border-radius: 15px;
 margin-left: 50px;
 align-self: center;
+}
+a {
+    text-decoration: none;
+    color: black;
 }
 .bouton_rdv_accueil:hover {
     transition: 0.2s ease;

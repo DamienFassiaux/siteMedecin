@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ghfgh
+{% block title %}DocAuTop
 {% endblock %}
 
 {% block body %}
@@ -45,7 +45,7 @@
 
 				<section class="fiche_medecin fm_child1">
 					<h2 class="h2_note_med">
-						Les médecins les mieux notés !
+						Les médecins les mieux notés!
 					</h2>
 				</section>
 
@@ -54,18 +54,21 @@
 
 					<div class="fiche_haut">
 
-						<div class="photo_fichemed"></div>
+						<div class="photo_fichemed2"></div>
 
 						<article class="para_fiche_container">
 							<p class="para_fiche">
-								<span class="nom_du_med_fiche">DrJeanJambon</span>
+
+								<span class="nom_du_med_fiche">Docteur Peter Parker</span>
 								<br>
-								Médecin généraliste						
+									Dentiste
+								 
+								<br>
+					
 							</p>
-							<p>						
-								7 Rue de la Poutre
-								<br>
-								78320 La Verrière
+							<p>
+								 12 rue des marcassins
+								  75010 Paris
 							</p>
 						</article>
 
@@ -73,19 +76,78 @@
 
 					<div class="fiche_medbas">
 
-						<button class="bouton_rdv_accueil">Prendre un rendez-vous</button>
-						<button class="bouton_ensavoirplus">En savoir plus</button>
+						<button class="bouton_rdv_accueil"><a href="{{ path('prise_rdv', {'id': 6 }) }}">Prendre un rendez-vous</a></button>
+						<button class="bouton_ensavoirplus"><a href="{{ path('site_medecin', {'id': 6}) }}">En savoir plus</a></button>
 						<article class="avis_fichemed">
-							Note :
+							Note: 4.8/5
 						</article>
 					</div>
 
 				</section>
 
+				<section id="fmfmc3" class="fiche_medecin fm_child3">
+				<div class="fiche_haut">
 
-				<section id="fmfmc3" class="fiche_medecin fm_child3"></section>
+						<div class="photo_fichemed3"></div>
 
-				<section class="fiche_medecin fm_child4"></section>
+						<article class="para_fiche_container">
+							<p class="para_fiche">
+								<span class="nom_du_med_fiche">Docteur John Doudou</span>
+								<br>
+									Ophtalmologiste	
+				
+								<br>
+						
+							</p>
+							<p>
+							 23 rue de la buche
+								  78460 Chevreuse
+							</p>
+						</article>
+
+					</div>
+
+					<div class="fiche_medbas">
+
+						<button class="bouton_rdv_accueil"><a href="{{ path('prise_rdv', {'id': 7 }) }}">Prendre un rendez-vous</a></button>
+						<button class="bouton_ensavoirplus"><a href="{{ path('site_medecin', {'id': 7}) }}">En savoir plus</a></button>
+						<article class="avis_fichemed">
+							Note:4.7/5
+						</article>
+					</div>
+				</section>
+
+				<section class="fiche_medecin fm_child4">
+				  <div class="fiche_haut">
+
+						<div class="photo_fichemed4"></div>
+
+						<article class="para_fiche_container">
+							<p class="para_fiche">
+								<span class="nom_du_med_fiche">Docteur Jean Jean</span>
+								<br>
+								 Dentiste
+								 
+								<br>
+					
+							</p>
+							<p>
+								 12 route de la Tuile
+								  91000 Evry	
+							</p>
+						</article>
+
+					</div>
+
+					<div class="fiche_medbas">
+
+						<button class="bouton_rdv_accueil"><a href="{{ path('prise_rdv', {'id': 8 }) }}">Prendre un rendez-vous</a></button>
+						<button class="bouton_ensavoirplus"><a href="{{ path('site_medecin', {'id': 8}) }}">En savoir plus</a></button>
+						<article class="avis_fichemed">
+							Note: 4.7/5
+						</article>
+					</div>
+				</section> 
 
 				<section class="espace_marketing fm_child5">
 					<div class="photomedecin_marketing"></div>
@@ -98,52 +160,7 @@
 					<p class="marketing_txt">En tant que membre, vous pouvez recommander un spécialiste à la communauté, pour une maladie, un test diagnostique, un traitement médical ou chirurgical.</p>
 					<p></p>
 				</section>
-
-
 			</main>
-		</div>
-		
-		<h1 class="display-4 text-center my-5">
-			{{ title }}</h1>
-		<div class="row">
-
-			{% for medecin in medecins %}
-
-				<div class="col-md-4">
-					<div
-						class="card mb-4 shadow-sm">
-						
-						<div class="card-body">
-
-							<h4 class="text-center">
-								{{medecin.nom}}
-							</h4>
-							<hr>
-							<p class="text-center">
-								{{medecin.ville}}
-							</p>
-							<img src="{{ asset('uploads/images/' ~ medecin.image) }}" alt="{{medecin.nom}}" class="img-medecins">
-							<hr>
-							<div> /5 </div>
-							<div> /5 </div>
-							<div> Note globale: </div>
-                        
-							{# <p class="card-text">{{ data.ville }}</p> #}
-							<div class="d-flex justify-content-between align-items-center">
-								<div class="btn-group mr-2">
-									<a href="{{ path('site_medecin', {'id': medecin.id}) }}" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
-
-								</div>
-								<div class="btn-group mr-2">
-									<a href="{{ path('prise_rdv', {'id': medecin.id}) }}" class="btn btn-sm btn-outline-secondary">Prendre un RDV</a>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			{% endfor %}
 		</div>
 
 	{% endblock %}

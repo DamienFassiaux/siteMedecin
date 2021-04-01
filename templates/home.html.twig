@@ -44,11 +44,11 @@
 				</div>
 
 
-				<div class="nav_enfant espace_medecin_container">
+				<div class="nav_enfantco espace_medecin_container">
 
 					{% if is_granted('ROLE_ADMIN') %}
 
-						<a class="nav_enfant" href="{{ path('admin') }}">
+						<a class="nav_enfantco" href="{{ path('admin') }}">
 							<span class="span1 span2">BACKOFFICE</span>
 						</a>
 
@@ -62,11 +62,11 @@
 
 				{% if app.user %}
 
-					<a class="nav_enfant" href="">
+					<a class="nav_enfantco" href="">
 						<span class="span1 span2">Mon compte</span>
 					</a>
 
-					<a class="nav_enfant" href="{{ path('security_logout') }}">
+					<a class="nav_enfantco" href="{{ path('security_logout') }}">
 						<span class="span1 span2">Déconnexion</span>
 					</a>
 

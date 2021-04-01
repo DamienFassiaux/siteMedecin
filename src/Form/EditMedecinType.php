@@ -23,7 +23,7 @@ class EditMedecinType extends AbstractType
                 'required'=>false])
             ->add('prenom',TextType::class,[
                 'required'=>false])
-            ->add('telephone',IntegerType::class,[
+            ->add('telephone',TextType::class,[
                 'required'=>false])
             ->add('centre_medical',TextType::class,[
                 'required'=>false])

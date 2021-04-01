@@ -95,7 +95,7 @@ class MedecinInscriptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Medecins::class,
-            // 'validation_groups' => ['inscription'] 
+             'validation_groups' => ['inscription'] 
         ]);
     }
 }
