@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ghfgh
+{% block title %}
+	page index
 {% endblock %}
 
+
 {% block body %}
+
 
 	<div class="container_1">
 
@@ -12,11 +15,11 @@
 			class="main">
 
 			{# <input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville...">
-												<a href="{{ path('search') }}">
-													Filtrer
-												</a>
-											</input>
-											<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input> #}
+																																																																								<a href="{{ path('search') }}">
+																																																																									Filtrer
+																																																																								</a>
+																																																																							</input>
+																																																																							<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input> #}
 
 
 			<h1 class="prendre_rdv_accueil">Réservez votre consultation chez un professionnel de santé
@@ -25,24 +28,24 @@
 				{{render(controller('App\\Controller\\SearchController::search'))}}
 			</div>
 			{# <div class="container_formulaire_accueil">
-			
-			
-						<form id="formulaire_accueil" action="">
-			
-							<select class="select_formulaire_accueil" name="">
-								<option class="op_accueil" placeholder="Spécialité" value="">Spécialité</option>
-								<option class="op_accueil" value="">2</option>
-								<option class="op_accueil" value="">3</option>
-							</select>
-							<input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."></input>
-						<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>
-			
-					<button class="valider_accueil">
-						<span class="valider2_accueil">Rechercher</span>
-						<div class="loupe_accueil"></div>
-					</button>
-				</form>
-			</div> #}
+																																																															
+																																																															
+																																																																		<form id="formulaire_accueil" action="">
+																																																															
+																																																																			<select class="select_formulaire_accueil" name="">
+																																																																				<option class="op_accueil" placeholder="Spécialité" value="">Spécialité</option>
+																																																																				<option class="op_accueil" value="">2</option>
+																																																																				<option class="op_accueil" value="">3</option>
+																																																																			</select>
+																																																																			<input class="input_formulaire_accueil" name="lieu" placeholder="Département, ville..."></input>
+																																																																		<input class="input_formulaire_accueil" name="medecin_etablissement" placeholder="Médecin, établissement..."></input>
+																																																															
+																																																																	<button class="valider_accueil">
+																																																																		<span class="valider2_accueil">Rechercher</span>
+																																																																		<div class="loupe_accueil"></div>
+																																																																	</button>
+																																																																</form>
+																																																															</div> #}
 
 		</div>
 

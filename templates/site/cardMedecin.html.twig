@@ -91,8 +91,8 @@
 						à
 						{{ avis.createdAt|date('h:i:s') }}
 
-						<div class="col_md-8">
-							{{ avis.contenu|striptags }}
+						<div
+							class="col_md-8">{# {{ avis.contenu|striptags }} #}
 						</div>
 
 					{% endfor %}
@@ -101,17 +101,17 @@
 			</div>
 		</div>
 		{# <h4 class="display-4 text-center my-5">
-					prendre un rendez vous...</h4>
-		
-				{{ form_start(formRdv,{'attr': {'class': 'col-md-4 mx-auto'}}) }}
-		
-				{{ form_row(formRdv.date) }}
-				{{ form_row(formRdv.horaires) }}
-				{{ form_row(formRdv.utilisateurs) }}
-				{{ form_row(formRdv.medecins) }}
-		
-				<button type="submit" class="btn btn-secondary">Confirmer cotre rendez vous</button>
-		
-				{{ form_end(formRdv)}} #}
+							prendre un rendez vous...</h4>
+				
+						{{ form_start(formRdv,{'attr': {'class': 'col-md-4 mx-auto'}}) }}
+				
+						{{ form_row(formRdv.date) }}
+						{{ form_row(formRdv.horaires) }}
+						{{ form_row(formRdv.utilisateurs) }}
+						{{ form_row(formRdv.medecins) }}
+				
+						<button type="submit" class="btn btn-secondary">Confirmer cotre rendez vous</button>
+				
+						{{ form_end(formRdv)}} #}
 
 	{% endblock %}

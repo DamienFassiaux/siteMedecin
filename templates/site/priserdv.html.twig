@@ -2,10 +2,24 @@
 
 {% block title %}gestion prise de rendez vous
 {% endblock %}
+{% block stylessheets %}
+	<style>
+		#calendrier {
+			width: 70%;
+			margin: auto;
+		}
+	</style>
+
+{% endblock %}
 
 {% block body %}
+	{{dump(data)}}
 	<h1 class="display-4 text-center my-5">Prise de rendez vous avec le Docteur
 		<strong class="text-success">{{nomMedecin}}</strong>
+
+		<div id="calendrier" class="col-md-10 mx-auto"></div>
+
+
 		!!!</h1>
 
 
@@ -18,4 +32,23 @@
 		<button class="btn btn-secondary mb-5"> Confirmer le rendez vous</button>
 	{{ form_end(formRdv) }}
 
+{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'dayGridMonth',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth, timeGridWeek'
+},
+events: {{ data|raw }}
+})
+calendar.render()
+}
+	</script>
 {% endblock %}

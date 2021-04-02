@@ -771,6 +771,20 @@ padding-left: 10px;
 
   }
 
+  @media screen and (min-height: 625px) {
+
+    .container_inscription_espacemed {
+        height: 120vh;
+    }
+    .big_container_inscription_espacemed {
+        min-height: 140vh;
+    }
+    .filter_blur_inscription_espacemed {
+        min-height: 140vh;
+    }
+
+  }
+
 /****************************************CONNEXION***************************************************/
 
 .bcontinuer {

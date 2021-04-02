@@ -9,6 +9,7 @@ use App\Entity\Medecins;
 use App\Form\RdvFormType;
 use App\Entity\Utilisateurs;
 use App\Form\InscriptionType;
+use App\Repository\CalendarRepository;
 use App\Repository\MedecinsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,8 +62,25 @@ class SiteController extends AbstractController
     /**
      * @Route("/site/rdv/{id}", name="prise_rdv")
      */
-    public function rendezVous(Medecins $medecin, Request $request, EntityManagerInterface $manager): Response
+    public function rendezVous(CalendarRepository $calendar, Medecins $medecin, Request $request, EntityManagerInterface $manager): Response
     {
+        $events = $calendar->findAll();
+        //dd($events);
+        //transformer les donnees en json
+        $rdvs = [];
+        foreach ($events as $event) {
+            $rdvs[] = [
+                'id' => $event->getId(),
+                'beginAt' => $event->getBeginAt()->format('Y-m-d H:i:s'),
+                'endAt' => $event->getEndAt()->format('Y-m-d H:i:s'),
+                'background_color' => $event->getBackgroundColor(),
+                'border_color' => $event->getBorderColor(),
+                'text_color' => $event->getTextColor(),
+
+            ];
+        }
+        $data = json_encode($rdvs);
+
         $rdv = new Rdv;
         $formRdv = $this->createForm(RdvFormType::class, $rdv);
         $formRdv->handleRequest($request);
@@ -83,7 +101,8 @@ class SiteController extends AbstractController
         }
         return $this->render('site/priserdv.html.twig', [
             'formRdv' => $formRdv->createView(),
-            'nomMedecin' => $medecin->getNom()
+            'nomMedecin' => $medecin->getNom(),
+            'data' => $data
         ]);
     }
 

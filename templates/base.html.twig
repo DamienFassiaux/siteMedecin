@@ -8,21 +8,22 @@
 			{% endblock %}
 		</title>
 
-		{# Run `composer require symfony/webpack-encore-bundle`
-																																																										           and uncomment the following Encore helpers to start using Symfony UX #}
+		{# {# Run `composer require symfony/webpack-encore-bundle` #}
+		<link
+		rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+		{# and uncomment the following Encore helpers to start using Symfony UX #}
+
 
 		{% block stylesheets %}
 			{# <link rel="stylesheet" href="{{asset('/style.css')}}"> #}
 			<link rel="preconnect" href="https://fonts.gstatic.com">
-			<link
-			href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
 
 
-			{# {% if is_granted('ROLE_ADMIN') %}  #}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-			<link
-			rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-			{# {% endif %}  #}
+			{% if is_granted('ROLE_ADMIN') %}
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+			{% endif %}
 
 			<link rel="stylesheet" href="{{ asset('/style.css') }}">
 		{% endblock %}
@@ -127,6 +128,7 @@
 
 			</footer>
 
+			<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js" integrity="sha256-ekrJn2FeZaiUFq99QswpQCUTME/HxaDfX7R8INzKJGE=" crossorigin="anonymous"></script>
 
 			{% block javascripts %}
 				<script src="{{asset('/script.js')}}"></script>
