@@ -18,7 +18,7 @@ class EditUserType extends AbstractType
                'required'=>false])
             ->add('prenom',TextType::class,[
                'required'=>false])
-            ->add('telephone',IntegerType::class,[
+            ->add('telephone',TextType::class,[
                'required'=>false])
             ->add('adresse',TextType::class,[
                 'required'=>false])
@@ -26,7 +26,7 @@ class EditUserType extends AbstractType
                 'required'=>false])
             ->add('ville',TextType::class,[
                 'required'=>false])
-                ->add('email', TextType::class,[
+            ->add('email', TextType::class,[
                     'required'=>false])
         ;
     }
@@ -35,6 +35,7 @@ class EditUserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateurs::class,
+            
         ]);
     }
 }

@@ -45,7 +45,7 @@ class Utilisateurs implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message= "Veuillez renseigner votre numéro!")
      * @Assert\Length(min=10, max=10 ,exactMessage= "Numéro incorrect")
      */
@@ -79,17 +79,17 @@ class Utilisateurs implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "Veuillez renseigner un mot de passe!")
+     * @Assert\NotBlank(message = "Veuillez renseigner un mot de passe!",groups={"inscription"})
      * @Assert\EqualTo(propertyPath="confirm_password",
-     * message="Les mots de passe ne correspondent pas")
+     * message="Les mots de passe ne correspondent pas",groups={"inscription"})
      */
     private $password;
 
 
     /** 
-     * @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!")
+     * @Assert\NotBlank(message = "Veuillez confirmer votre mot de passe!",groups={"inscription"})
      * @Assert\EqualTo(propertyPath="password",
-     * message="Les mots de passe ne correspondent pas")
+     * message="Les mots de passe ne correspondent pas",groups={"inscription"})
      */
     public $confirm_password;
 
@@ -143,12 +143,12 @@ class Utilisateurs implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 

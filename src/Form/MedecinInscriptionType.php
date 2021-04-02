@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class MedecinInscriptionType extends AbstractType
 {
@@ -26,7 +28,7 @@ class MedecinInscriptionType extends AbstractType
             ->add('prenom', TextType::class, [
                 'required' => false
             ])
-            ->add('telephone', IntegerType::class, [
+            ->add('telephone', TextType::class, [
                 'required' => false
             ])
             ->add('centre_medical', TextType::class, [
@@ -60,6 +62,23 @@ class MedecinInscriptionType extends AbstractType
             ->add('departement', EntityType::class, [
                 'class' => Departement::class,
                 'choice_label' => 'nom'
+            ])
+
+            ->add('image', FileType::class, [
+                'label' =>"Photo du médecin", 
+                'mapped' => true, 
+                'required' => false, 
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/jpg'
+                        ],
+                        'mimeTypesMessage' => 'Extensions acceptées : jpg/jpeg/png '
+                    ])
+                ]
             ]);
         // ->add('roles', CollectionType::class, [
         //     'label_format' => 'Role medecin',
@@ -76,7 +95,7 @@ class MedecinInscriptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Medecins::class,
-            // 'validation_groups' => ['inscription'] 
+             'validation_groups' => ['inscription'] 
         ]);
     }
 }

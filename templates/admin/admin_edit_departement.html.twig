@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "home.html.twig" %}
 
 {% block title %}
     BACKOFFICE | Gestion Département
@@ -8,9 +8,9 @@
 
 
 
-      {% if idDepartement %}
+      {% if Departement %}
 
-         <h1 class="display-4 text-center my-5">Modification département n° <span class="text-info">{{ idDepartement }}</span></h1>
+         <h1 class="display-4 text-center my-5">Modification département n° <span class="text-info">{{ Departement }}</span></h1>
 
       {% else %}
 
